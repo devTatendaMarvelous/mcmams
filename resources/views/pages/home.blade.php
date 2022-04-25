@@ -32,7 +32,7 @@
                     <h1>Welcome New User you currently have no privilledges yet. kindly contact the Admin for the previlledges!!!</h1>
                    </div>
                @else
-                       <div class="row">
+                       {{-- <div class="row">
                        <div class="col-xl-3 col-sm-6 col-12">
                            <div class="card">
                                <div class="card-body">
@@ -115,7 +115,7 @@
                                    </div>
                                </div>
                            </div>
-                       </div>
+                       </div> --}}
 
                        @if (Auth::user()->role=='SuperAdmin')
                            <div class="col-xl-3 col-sm-6 col-12">
@@ -131,7 +131,7 @@
                                    </div>
                                    <div class="dash-widget-info">
 
-                                       <h6 class="text-muted">ndiwe super admin Loans</h6>
+                                       <h6 class="text-muted"> super admin Loans</h6>
                                        <div class="progress progress-sm">
                                            <div class="progress-bar bg-warning w-50"></div>
                                        </div>
