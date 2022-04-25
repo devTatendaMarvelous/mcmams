@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClientsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -34,8 +35,14 @@ Route::get('/users/{id}/edit', [UserController::class, 'edit']);
 Route::get('/users/{id}/delete', [UserController::class, 'deleteUser']);
 route::post('/users/{id}/store', [UserController::class, 'updateUser']);
 // =============================================================================================================
-// ==========PRINCIPAL MEMBERS=================================================================================
+// ==========MEMBERS=================================================================================
 Route::get('/members',[MembersController::class, 'index']);
+Route::post('/members/create', [MembersController::class, 'store']);
+Route::get('/dependends/{id}', [MembersController::class,'addDependeds']);
+Route::get('/dependends/{id}/store', [MembersController::class, 'storeDependends']);
+// ==============================================================================================================
+// ==========CLIENTS=================================================================================
+Route::get('/clients/{type}', [ClientsController::class, 'index']);
 Route::post('/members/create', [MembersController::class, 'store']);
 // ==============================================================================================================
 

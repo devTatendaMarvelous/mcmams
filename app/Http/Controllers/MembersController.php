@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dependend;
 use App\Models\Member;
 use Illuminate\Http\Request;
 
@@ -58,11 +59,32 @@ class MembersController extends Controller
         $member->phone = $request->input('phone');
         $member->sex = $request->input('sex');
         $member->address = $request->input('address');
+        $member->memberno="NA";
         $member->save();
 
         return redirect('/members');
     }
+    public function storeDependends(Request $request,$id)
+    {
+        $member =Member::findorfail($id);
+        $dependend=new Dependend();
+        $dependend->name = $request->input('name');
+        $dependend->surname = $request->input('surname');
+        $dependend->initials = $request->input('initials');
+        $dependend->dob = $request->input('dob');
+        $dependend->natId = $request->input('natId');
+        $dependend->company = $request->input('company');
+        $dependend->email = $request->input('email');
+        $dependend->phone = $request->input('phone');
+        $dependend->sex = $request->input('sex');
+        $dependend->address = $request->input('address');
+        $member->dependeds->save($dependend);
 
+        return redirect('/members');
+    }
+    function addDependeds($id){
+        return view('superadmin.dependends.dependends')->with('memberId',$id);
+    }
     /**
      * Display the specified resource.
      *

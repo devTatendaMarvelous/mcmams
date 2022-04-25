@@ -18,6 +18,7 @@ class MemberFactory extends Factory
     public function definition()
     {
         return [
+            'memberno'=>'NA',
             'name' => $this->faker->name(),
             'surname' => $this->faker->name(),
             'dob' => $this->faker->date(),

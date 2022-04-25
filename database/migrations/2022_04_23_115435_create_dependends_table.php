@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('members', function (Blueprint $table) {
+        Schema::create('dependends', function (Blueprint $table) {
             $table->id();
             $table->string('memberno');
             $table->string('name');
@@ -25,8 +25,8 @@ return new class extends Migration
             $table->string('email');
             $table->string('natId');
             $table->char('sex');
-            $table->mediumText('address');
             $table->timestamps();
+            $table->foreign('memberno')->references('memberno')->on('members')->onDelete('cascade');
         });
     }
 
@@ -37,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('members');
+        Schema::dropIfExists('dependends');
     }
 };

@@ -195,7 +195,28 @@
                                
                            @endif href="#sidebarLayouts" data-bs-toggle="collapse" role="button"
                                 aria-expanded="false" aria-controls="sidebarLayouts">
-                                <i class=" ri-user-fill "></i> <span data-key="t-layouts">Users</span>
+                                <i class=" ri-user-fill "></i> <span data-key="t-layouts">Clients</span>
+                            </a>
+                            <div class="collapse menu-dropdown" id="sidebarLayouts">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="/clients/p" class="nav-link"  data-key="t-horizontal">Principal Members</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/clients/d" class="nav-link"  data-key="t-detached">Dependends</a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </li> <!-- end Dashboard Menu -->
+                        <li class="nav-item">
+                            <a class="nav-link menu-link"
+                            @if (auth::user()->role=='Member')
+                            style="display:none;"
+                               
+                           @endif href="#sidebarLayouts" data-bs-toggle="collapse" role="button"
+                                aria-expanded="false" aria-controls="sidebarLayouts">
+                                <i class=" ri-user-fill "></i> <span data-key="t-layouts">Clients</span>
                             </a>
                             <div class="collapse menu-dropdown" id="sidebarLayouts">
                                 <ul class="nav nav-sm flex-column">

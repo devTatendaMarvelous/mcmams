@@ -5,12 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Member extends Model
+class Account extends Model
 {
     use HasFactory;
-    protected $table='members';
-    public function dependends(){
-        return $this->hasMany(Dependend::class);
-
-    }
 }
