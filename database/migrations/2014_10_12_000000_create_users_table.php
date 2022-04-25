@@ -24,6 +24,17 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+          // Insert some stuff
+    DB::table('users')->insert(
+        array(
+            'name' =>'Tatenda Marvelous',
+            'email' => 'marveloustchimusoro@gmail.com',
+            'password' => Hash::make('password'),
+            'role'=>'SuperAdmin',
+            'photo'=>'nomedia.png',
+        )
+    );
     }
 
     /**
