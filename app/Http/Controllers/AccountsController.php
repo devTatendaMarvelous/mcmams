@@ -2,23 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Account;
-use App\Models\Dependend;
-use App\Models\Member;
 use Illuminate\Http\Request;
-
-class MembersController extends Controller
+use App\Models\Member;
+class AccountsController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -26,12 +13,7 @@ class MembersController extends Controller
      */
     public function index()
     {
-        $members= Member::all();
-        $accounts=Account::all();
-        return view('superadmin.members.members')
-        ->with('accounts',$accounts)
-        ->with('members',$members);
-
+        //
     }
 
     /**
@@ -39,8 +21,12 @@ class MembersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
+
     {
+        $member=Member::findorfail($id);
+        return view('superadmin.members.accounts.create')
+        ->with('member',$member)->with('id',$id);
         
     }
 
@@ -52,26 +38,9 @@ class MembersController extends Controller
      */
     public function store(Request $request)
     {
-        $member=new Member();
-        $member->name=$request->input('name');
-        $member->surname = $request->input('surname');
-        $member->initials = $request->input('initials');
-        $member->dob = $request->input('dob');
-        $member->natId = $request->input('natId');
-        $member->company = $request->input('company');
-        $member->email = $request->input('email');
-        $member->phone = $request->input('phone');
-        $member->sex = $request->input('sex');
-        $member->address = $request->input('address');
-        $member->memberno="NA";
-        $member->save();
+        //
+    }
 
-        return redirect('/members');
-    }
-    
-    function addDependeds($id){
-        return view('superadmin.dependends.dependends')->with('memberId',$id);
-    }
     /**
      * Display the specified resource.
      *

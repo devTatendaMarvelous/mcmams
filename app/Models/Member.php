@@ -10,7 +10,14 @@ class Member extends Model
     use HasFactory;
     protected $table='members';
     public function dependends(){
+
         return $this->hasMany(Dependend::class);
 
+    }
+
+    public function account()
+    {
+        return $this->hasOne(Account::class);
+     
     }
 }

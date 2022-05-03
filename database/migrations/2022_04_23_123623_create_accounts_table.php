@@ -15,6 +15,14 @@ return new class extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('member_id')->references('id')->on('members')->onDelete('cascade');
+            $table->string('memberno');
+            $table->integer('suffix');
+            $table->bigInteger('globallimit');
+            $table->bigInteger('principal');
+            $table->string('billinggroup');
+            $table->string('status');
+            $table->date('joiningdate');
             $table->timestamps();
         });
     }

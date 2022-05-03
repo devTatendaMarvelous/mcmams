@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('dependends', function (Blueprint $table) {
             $table->id();
-            $table->string('memberno');
+            
+            $table->foreignId('member_id')->references('id')->on('members')->onDelete('cascade');
             $table->string('name');
             $table->string('surname');
             $table->string('initials')->nullable();
@@ -24,9 +25,10 @@ return new class extends Migration
             $table->string('phone');
             $table->string('email');
             $table->string('natId');
+            $table->mediumText('address');
             $table->char('sex');
             $table->timestamps();
-            $table->foreign('memberno')->references('memberno')->on('members')->onDelete('cascade');
+           
         });
     }
 

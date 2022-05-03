@@ -34,13 +34,13 @@
                                         
                                   
                                        
-                                        <div class="" 
+                                        <div class="card-body" 
                                             >
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content border-0">
                                                     <div class="modal-header bg-soft-info p-3">
                                                         <h5 class="modal-title" id="exampleModalLabel">Add Member</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
+                                                        
                                                     </div>
                                                     <form action="/dependends/{{ $id }}/store" method="POST">
                                                         @csrf
@@ -77,12 +77,7 @@
                                                                         <input type="text" id="customername-field" name="natId" class="form-control" placeholder="National ID" required />
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-lg-12">
-                                                                    <div>
-                                                                        <label for="company_name-field" class="form-label">Company Name</label>
-                                                                        <input type="text" id="company_name-field" name="company" class="form-control" placeholder="Enter company name" required />
-                                                                    </div>
-                                                                </div>
+                                                                
                                                                 <div class="col-lg-12">
                                                                     <div>
                                                                         <label for="email_id-field" class="form-label">Email </label>

@@ -12,8 +12,8 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                    <h4 class="mb-sm-0">Members</h4>
-
+                                    <h4 class="mb-sm-0">{{ count($members) }} Members</h4>
+<span class="badge badge-label bg-primary"><i class="mdi mdi-circle-medium"></i> Primary</span>
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
                                             <li class="breadcrumb-item"><a href="javascript: void(0);">Members</a></li>
@@ -24,8 +24,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- end page title -->
-
+                        <!-- end page titl---->
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="card">
@@ -82,10 +81,10 @@
                                                             <th scope="col">Action</th>
                                                         </tr>
                                                     </thead>
-                                               
-                                                        @forelse ($members as $member )
-                                                        
+                                                    
                                                     <tbody class="list form-check-all">
+                                                    @forelse ($members as $member )
+                                                        
                                                         <tr >
                                                             <th scope="row">
                                                                 <div class="form-check">
@@ -111,10 +110,25 @@
                                                                                 <i class="ri-more-fill align-middle"></i>
                                                                             </button>
                                                                             <ul class="dropdown-menu dropdown-menu-end">
-                                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li>
+                                                                                @forelse ($accounts as $account)
+                                                                                    @if ($account->ower_id==$member->id<0))
+                                                                                    <li><a class="dropdown-item" href="/dependends/{{ $member->id }}/show"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View Dependends</a></li>
+                                                                                    <li><a class="dropdown-item" href="/dependends/{{ $member->id }}/add"><i class="ri-add-fill align-bottom me-2 text-muted"></i>Add Depended</a></li>
+                                                                              
+                                                                                
+                                                                                @endif
+                                                                                @empty
+                                                                                     <li>
+                                                                                        <button type="button" class="btn btn-primary-outline" data-bs-toggle="modal" data-bs-target="#exampleModalgrid">
+                                                                                            <i class="ri-add-fill align-bottom me-2 text-muted"></i> Open Account
+                                                                                        </button> 
+                                                                                        <a class="dropdown-item" href="/accounts/{{ $member->id }}/open"></a></li>
+                                                                               
+                                                                                @endforelse
+                                                                                
                                                                                 <li><a class="dropdown-item edit-item-btn" href="#showModal" data-bs-toggle="modal"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
                                                                                 <li> 
-                                                                                    <a class="dropdown-item remove-item-btn" data-bs-toggle="modal" href="#deleteRecordModal">
+                                                                                    <a class="dropdown-item remove-item-btn" data-bs-toggle="modal" href="#deleteRecordModal" >
                                                                                         <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete
                                                                                     </a>
                                                                                 </li>
@@ -124,17 +138,89 @@
                                                                 </ul>
                                                             </td>
                                                         </tr>
-                                                             <div class="noresult" style="display: none">
-                                                            <div class="text-center">
-                                                                <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop"
-                                                                    colors="primary:#121331,secondary:#08a88a" style="width:75px;height:75px">
-                                                                </lord-icon>
-                                                                <h5 class="mt-2">Sorry! No Result Found</h5>
-                                                                <p class="text-muted mb-0">We've searched more than {{ count($members) }}+ members We did not find any
-                                                                   members for you search.</p>
+                                                            
+                                                        
+
+                                                <!-- Open Account Modal -->
+
+                                                <div class="modal fade" id="exampleModalgrid" tabindex="-1" aria-labelledby="exampleModalgridLabel" aria-modal="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                {{ $member->id }}
+                                                                <h5 class="modal-title" id="exampleModalgridLabel">Open An Account For {{ $member->name }}</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form action="/accounts/{{ $member->id }}/store" method="POST">
+                                                                    @csrf
+                                                                    <div class="row g-3">
+                                                                        <div class="col-xxl-6">
+                                                                            <div>
+                                                                                <label for="firstName" class="form-label">Global Limit</label>
+                                                                                <input type="number" class="form-control" id="firstName" placeholder="$0.00" required>
+                                                                            </div>
+                                                                        </div><!--end col-->
+                                                                        <div class="col-xxl-6">
+                                                                            <div>
+                                                                                <label for="lastName" class="form-label">Principal</label>
+                                                                                <input type="number" class="form-control" id="lastName" placeholder="$0.00" required>
+                                                                            </div>
+                                                                        </div><!--end col-->
+                                                                        
+                                                                       <div class="col-xxl-6">
+                                                                           <select name="billinggroup" class="form-control" id="">
+                                                                                <option value="">Billing Group</option>
+                                                                                <option value="principal">Principal</option>
+                                                                                <option value="spouse">Spouse</option>
+                                                                                <option value="child">child</option>
+                                                                                <option value="senior">Senior</option>
+                                                                           </select>
+                                                                        </div><!--end col-->
+                                                                       
+                                                                        <div class="col-lg-12">
+                                                                            <div class="hstack gap-2 justify-content-end">
+                                                                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                                            </div>
+                                                                        </div><!--end col-->
+                                                                    </div><!--end row-->
+                                                                </form>
                                                             </div>
                                                         </div>
-                                                        
+                                                    </div>
+                                                </div>
+{{-- ========================================================Open Account Modal End============================================================================================================= --}}
+
+
+{{-- ========================================================Delete Member Modal ============================================================================================================= --}}
+  <div class="modal fade zoomIn" id="deleteRecordModal" tabindex="-1"
+                                            aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btn-close"></button>
+                                                    </div>
+                                                    <div class="modal-body p-5 text-center">
+                                                        <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop" colors="primary:#405189,secondary:#f06548" style="width:90px;height:90px"></lord-icon>
+                                                        <div class="mt-4 text-center">
+                                                            <h4 class="fs-semibold">You are about to delete a contact ?</h4>
+                                                            <p class="text-muted fs-14 mb-4 pt-1">Deleting your contact will remove all of your information from our database.</p>
+                                                            <div class="hstack gap-2 justify-content-center remove">
+                                                                <form action="/members">
+                                                                      <a class="btn btn-link link-success fw-medium text-decoration-none" data-bs-dismiss="modal"><i class="ri-close-line me-1 align-middle"></i> Close</a>
+                                                                        
+                                                                      <input type="submit" value="Yes Delete" class="btn btn-danger" >
+                                                                </form>
+                                                              
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+         {{-- ========================================================Delete Member Modal End============================================================================================================= --}}
+
                                                    
                                                         @empty
                                                             
@@ -145,6 +231,16 @@
                                                                 </div>
                                                            
                                                         @endforelse
+                                                         <div class="noresult" style="display: none">
+                                                            <div class="text-center">
+                                                                <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop"
+                                                                    colors="primary:#121331,secondary:#08a88a" style="width:75px;height:75px">
+                                                                </lord-icon>
+                                                                <h5 class="mt-2">Sorry! No Result Found</h5>
+                                                                <p class="text-muted mb-0">We've searched more than {{ count($members) }}+ members We did not find any
+                                                                   members for you search.</p>
+                                                            </div>
+                                                        </div>
                                                         </tbody>
                                                 </table>
                                                        
@@ -255,29 +351,8 @@
                                                 </div>
                                             </div>
                                         </div><!--end add modal-->
-                    
-                                        <div class="modal fade zoomIn" id="deleteRecordModal" tabindex="-1"
-                                            aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btn-close"></button>
-                                                    </div>
-                                                    <div class="modal-body p-5 text-center">
-                                                        <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop" colors="primary:#405189,secondary:#f06548" style="width:90px;height:90px"></lord-icon>
-                                                        <div class="mt-4 text-center">
-                                                            <h4 class="fs-semibold">You are about to delete a contact ?</h4>
-                                                            <p class="text-muted fs-14 mb-4 pt-1">Deleting your contact will remove all of your information from our database.</p>
-                                                            <div class="hstack gap-2 justify-content-center remove">
-                                                                <button class="btn btn-link link-success fw-medium text-decoration-none" data-bs-dismiss="modal"><i class="ri-close-line me-1 align-middle"></i> Close</button>
-                                                                <button class="btn btn-danger" id="delete-record">Yes, Delete It!!</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--end delete modal -->
+                                            
+                                      
 
                                     </div>
                                 </div><!--end card-->

@@ -2,36 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Account;
-use App\Models\Dependend;
-use App\Models\Member;
 use Illuminate\Http\Request;
+use App\Models\Member;
+use App\Models\Dependend;
 
-class MembersController extends Controller
+class DependendsController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $members= Member::all();
-        $accounts=Account::all();
-        return view('superadmin.members.members')
-        ->with('accounts',$accounts)
-        ->with('members',$members);
-
+        return view('superadmin.dependends.dependends')->with('id',$id);
     }
 
     /**
@@ -41,7 +25,7 @@ class MembersController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -50,28 +34,28 @@ class MembersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-        $member=new Member();
-        $member->name=$request->input('name');
-        $member->surname = $request->input('surname');
-        $member->initials = $request->input('initials');
-        $member->dob = $request->input('dob');
-        $member->natId = $request->input('natId');
-        $member->company = $request->input('company');
-        $member->email = $request->input('email');
-        $member->phone = $request->input('phone');
-        $member->sex = $request->input('sex');
-        $member->address = $request->input('address');
-        $member->memberno="NA";
-        $member->save();
+        $member = Member::findorfail($id);
+        $dependend = new Dependend();
+        $dependend->memberno =$member->memberno;
+        $dependend->name = $request->input('name');
+        $dependend->surname = $request->input('surname');
+        $dependend->initials = $request->input('initials');
+        $dependend->dob = $request->input('dob');
+        $dependend->natId = $request->input('natId');
+        $dependend->company = $member->company;
+        $dependend->email = $request->input('email');
+        $dependend->phone = $request->input('phone');
+        $dependend->sex = $request->input('sex');
+        $dependend->address = $request->input('address');
+        $dependend->member_id=$id;
+        $dependend->save();
+       
 
         return redirect('/members');
     }
-    
-    function addDependeds($id){
-        return view('superadmin.dependends.dependends')->with('memberId',$id);
-    }
+
     /**
      * Display the specified resource.
      *
@@ -80,7 +64,12 @@ class MembersController extends Controller
      */
     public function show($id)
     {
-        //
+        $dependends=Dependend::all()->where('member_id',$id);
+        $member=Member::findorfail($id);
+        
+       return view('superadmin.dependends.view')
+            ->with('member',$member)
+            ->with('dependends', $dependends);
     }
 
     /**
