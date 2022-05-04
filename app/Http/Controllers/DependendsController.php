@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Account;
 use Illuminate\Http\Request;
 use App\Models\Member;
 use App\Models\Dependend;
@@ -36,9 +37,13 @@ class DependendsController extends Controller
      */
     public function store(Request $request,$id)
     {
-        $member = Member::findorfail($id);
+        $memberno = Account::all()->where('member_id',$id);
+        $member=Member::find($id);
+        $memberno=json_decode($memberno,true);
+
+        $memberno=$memberno[0]['memberno'];
         $dependend = new Dependend();
-        $dependend->memberno =$member->memberno;
+        $dependend->memberno =$memberno;
         $dependend->name = $request->input('name');
         $dependend->surname = $request->input('surname');
         $dependend->initials = $request->input('initials');
@@ -51,8 +56,6 @@ class DependendsController extends Controller
         $dependend->address = $request->input('address');
         $dependend->member_id=$id;
         $dependend->save();
-       
-
         return redirect('/members');
     }
 

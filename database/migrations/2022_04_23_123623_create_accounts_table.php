@@ -22,7 +22,6 @@ return new class extends Migration
             $table->bigInteger('principal');
             $table->string('billinggroup');
             $table->string('status');
-            $table->date('joiningdate');
             $table->timestamps();
         });
     }

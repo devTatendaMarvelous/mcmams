@@ -155,21 +155,23 @@
                                                                 <form action="/accounts/{{ $member->id }}/store" method="POST">
                                                                     @csrf
                                                                     <div class="row g-3">
-                                                                        <div class="col-xxl-6">
+                                                                        {{-- <div class="col-xxl-6">
                                                                             <div>
                                                                                 <label for="firstName" class="form-label">Global Limit</label>
-                                                                                <input type="number" class="form-control" id="firstName" placeholder="$0.00" required>
+                                                                                <input type="number" class="form-control" name="global"id="firstName" placeholder="$0.00" required>
                                                                             </div>
-                                                                        </div><!--end col-->
+                                                                        </div><!--end col--> --}}
                                                                         <div class="col-xxl-6">
                                                                             <div>
                                                                                 <label for="lastName" class="form-label">Principal</label>
-                                                                                <input type="number" class="form-control" id="lastName" placeholder="$0.00" required>
+                                                                                <input type="number" class="form-control"name="principal" id="lastName" placeholder="$0.00" required>
                                                                             </div>
                                                                         </div><!--end col-->
                                                                         
-                                                                       <div class="col-xxl-6">
+                                                                       <div class="col-xxl-3">
+                                                                           <label for="lastName" class="form-label">Billing Group</label>
                                                                            <select name="billinggroup" class="form-control" id="">
+                                                                                
                                                                                 <option value="">Billing Group</option>
                                                                                 <option value="principal">Principal</option>
                                                                                 <option value="spouse">Spouse</option>
