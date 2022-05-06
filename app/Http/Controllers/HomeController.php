@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('pages.home');
+        $Values=[1,4,5,67];
+        return view('pages.home')->with('values', $Values);
     }
 }

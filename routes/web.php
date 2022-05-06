@@ -36,6 +36,7 @@ Route::post('/members/create', [MembersController::class, 'store']);
 
 //==================ACCOUNTS=====================================================================================
 Route::post('/accounts/{id}/store', [AccountsController::class,'store']);
+Route::get('/accounts/{type}', [AccountsController::class,'index']);
 
 
 //==================================================================================================================

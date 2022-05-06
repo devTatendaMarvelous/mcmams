@@ -32,110 +32,47 @@
                     <h1>Welcome New User you currently have no privilledges yet. kindly contact the Admin for the previlledges!!!</h1>
                    </div>
                @else
-                       {{-- <div class="row">
-                       <div class="col-xl-3 col-sm-6 col-12">
-                           <div class="card">
-                               <div class="card-body">
-                                   <div class="dash-widget-header">
-					<span class="dash-widget-icon text-primary border-primary">
-						<i class="fe fe-money"></i>
-					</span>
-                                       <div class="dash-count">
-                                           <h3>3</h3>
-                                       </div>
-                                   </div>
-                                   <div class="dash-widget-info">
-                                       <h6 class="text-muted">Total Loans</h6>
-                                       <div class="progress progress-sm">
-                                           <div class="progress-bar bg-primary w-50"></div>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                       <div class="col-xl-3 col-sm-6 col-12">
-                           <div class="card">
-                               <div class="card-body">
-                                   <div class="dash-widget-header">
-						<span class="dash-widget-icon text-success">
-							<i class="fe fe-credit-card"></i>
-						</span>
-                                       <div class="dash-count">
-                                           <h3>6</h3>
-                                       </div>
-                                   </div>
-                                   <div class="dash-widget-info">
-
-                                       <h6 class="text-muted">Active Loans</h6>
-                                       <div class="progress progress-sm">
-                                           <div class="progress-bar bg-success w-50"></div>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                       <div class="col-xl-3 col-sm-6 col-12">
-                           <div class="card">
-                               <div class="card-body">
-                                   <div class="dash-widget-header">
-						<span class="dash-widget-icon text-danger border-danger">
-							<i class="fe fe-folder"></i>
-						</span>
-                                       <div class="dash-count">
-                                           <h3>5</h3>
-                                       </div>
-                                   </div>
-                                   <div class="dash-widget-info">
-
-                                       <h6 class="text-muted">Rejected Loans</h6>
-                                       <div class="progress progress-sm">
-                                           <div class="progress-bar bg-danger w-50"></div>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                       <div class="col-xl-3 col-sm-6 col-12">
-                           <div class="card">
-                               <div class="card-body">
-                                   <div class="dash-widget-header">
-						<span class="dash-widget-icon text-warning border-warning">
-							<i class="fe fe-users"></i>
-						</span>
-                                       <div class="dash-count">
-                                           <h3>4</h3>
-                                       </div>
-                                   </div>
-                                   <div class="dash-widget-info">
-
-                                       <h6 class="text-muted">Pending Loans</h6>
-                                       <div class="progress progress-sm">
-                                           <div class="progress-bar bg-warning w-50"></div>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                       </div> --}}
+                  
 
                        @if (Auth::user()->role=='SuperAdmin')
-                           <div class="col-xl-3 col-sm-6 col-12">
+                           <div class=" col-sm-10 col-12">
                            <div class="card">
                                <div class="card-body">
-                                   <div class="dash-widget-header">
-						<span class="dash-widget-icon text-warning border-warning">
-							<i class="fe fe-users"></i>
-						</span>
-                                       <div class="dash-count">
-                                           <h3>4</h3>
-                                       </div>
-                                   </div>
-                                   <div class="dash-widget-info">
+                               <canvas id="myChart" ></canvas>
+                                <script>
+                                const ctx = document.getElementById('myChart').getContext('2d');
+                                const myChart = new Chart(ctx, {
+                                    type: 'bar',
+                                    data: {
+                                        labels: ['Suspended', 'Opened', 'Waiting period', 'Active'],
+                                        datasets: [{
+                                            label: 'Medical Aid Accounts',
+                                            data: [3, 7, 8,25,],
+                                            backgroundColor: [
+                                                'rgba(255, 99, 132, 0.2)',
+                                                'rgba(54, 162, 235, 0.2)',
+                                                'rgba(255, 206, 86, 0.2)',
+                                                'rgba(75, 192, 192, 0.2)',
+                                            ],
+                                            borderColor: [
+                                                'rgba(255, 99, 132, 1)',
+                                                'rgba(54, 162, 235, 1)',
+                                                'rgba(255, 206, 86, 1)',
+                                                'rgba(75, 192, 192, 1)',
+                                            ],
+                                            borderWidth: 1
+                                        }]
+                                    },
+                                    options: {
+                                        scales: {
+                                            y: {
+                                                beginAtZero: true
+                                            }
+                                        }
+                                    }
+                                });
+                                </script>
 
-                                       <h6 class="text-muted"> super admin </h6>
-                                       <div class="progress progress-sm">
-                                           <div class="progress-bar bg-warning w-50"></div>
-                                       </div>
-                                   </div>
                                </div>
                            </div>
                        </div>

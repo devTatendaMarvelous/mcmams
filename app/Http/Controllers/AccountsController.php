@@ -12,9 +12,11 @@ class AccountsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($type)
     {
-        //
+     $accounts=Account::all();
+     return view('superadmin.accounts.index')
+     ->with('accounts',$accounts);
     }
 
     /**
@@ -58,6 +60,7 @@ class AccountsController extends Controller
             $memberAccount->principal=$contribution;
             $memberAccount->globallimit=$contribution*48;
             $memberAccount->suffix=1;
+            $memberAccount->status='Pending';
             $memberAccount->billinggroup=$request->input('billinggroup');
             $memberAccount->memberno='mc-'.count($account);
             $memberAccount->save();

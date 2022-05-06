@@ -17,6 +17,7 @@
     <link href="{{ asset('assets/libs/swiper/swiper-bundle.min.css')}}" rel="stylesheet" type="text/css" />
     <!-- Layout config Js -->
     <script src="{{ asset('assets/js/layout.js')}}"></script>
+    <script src="{{ asset('assets/js/chart.js')}}"></script>
     <!-- Bootstrap Css -->
     <link href="{{ asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
@@ -199,12 +200,12 @@
                                
                            @endif href="#sidebarLayouts" data-bs-toggle="collapse" role="button"
                                 aria-expanded="false" aria-controls="sidebarLayouts">
-                                <i class=" ri-user-fill "></i> <span data-key="t-layouts">Clients</span>
+                                <i class=" ri-user-fill "></i> <span data-key="t-layouts">Accounts</span>
                             </a>
                             <div class="collapse menu-dropdown" id="sidebarLayouts">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="/clients/p" class="nav-link"  data-key="t-horizontal">Principal Members</a>
+                                        <a href="/accounts/principal" class="nav-link"  data-key="t-horizontal">Principal Members</a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="/clients/d" class="nav-link"  data-key="t-detached">Dependends</a>
@@ -297,12 +298,7 @@
                             </div>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link menu-link"  href="#">
-                                <i class="ri-rocket-line"></i> <span data-key="t-landing">Landing</span>
-                                <span class="badge badge-pill bg-danger" data-key="t-new">New</span>
-                            </a>
-                        </li>
+                      
 
                     </ul>
                 </div>
@@ -328,7 +324,7 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="text-sm-end d-none d-sm-block">
-                                Design & Develop by EASYGRAB
+                                
                             </div>
                         </div>
                     </div>
@@ -375,6 +371,8 @@
         <script src="{{ asset('assets/libs/list.pagination.js/list.pagination.min.js')}}"></script>
 
         <script src="{{ asset('assets/js/pages/crm-contact.init.js')}}"></script>
+        <!--crypto-orders init-->
+        <script src="assets/js/pages/crypto-orders.init.js"></script>
     <!-- App js -->
     <script src="{{ asset('assets/js/app.js')}}"></script>
 </body>
