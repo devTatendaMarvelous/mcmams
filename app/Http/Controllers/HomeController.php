@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Member;
 
 class HomeController extends Controller
 {
@@ -22,8 +23,10 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        $Values=[1,4,5,67];
-        return view('pages.home')->with('values', $Values);
+    {   $members=Member::all();
+        $members=count($members);
+       $opened= -25;
+        return view('pages.home')->with('opened',$opened)
+        ->with('members',$members);
     }
 }

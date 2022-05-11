@@ -208,7 +208,28 @@
                                         <a href="/accounts/principal" class="nav-link"  data-key="t-horizontal">Principal Members</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="/clients/d" class="nav-link"  data-key="t-detached">Dependends</a>
+                                        <a href="/" class="nav-link"  data-key="t-detached">Dependends</a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </li> <!-- end Dashboard Menu -->
+                          <li class="nav-item">
+                            <a class="nav-link menu-link"
+                            @if (auth::user()->role=='Member')
+                            style="display:none;"
+                               
+                           @endif href="#payments" data-bs-toggle="collapse" role="button"
+                                aria-expanded="false" aria-controls="payments">
+                                <i class=" ri-user-fill "></i> <span data-key="t-layouts">Payments</span>
+                            </a>
+                            <div class="collapse menu-dropdown" id="payments">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="/payments" class="nav-link"  data-key="t-horizontal">Clients</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/" class="nav-link"  data-key="t-detached">Other</a>
                                     </li>
                                     
                                 </ul>

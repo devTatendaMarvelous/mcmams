@@ -13,16 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('accounts', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('member_id')->references('id')->on('members')->onDelete('cascade');
-            $table->string('memberno');
-            $table->integer('suffix');
-            $table->float('globallimit');
-            $table->float('principal');
-            $table->float('balance');
-            $table->string('billinggroup');
-            $table->string('status');
+            $table->float('amount');
+            $table->string('referrence')->unique();
+            $table->string('purpose');
             $table->timestamps();
         });
     }
@@ -34,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('accounts');
+        Schema::dropIfExists('payments');
     }
 };

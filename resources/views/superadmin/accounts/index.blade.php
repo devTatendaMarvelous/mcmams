@@ -46,233 +46,62 @@
                                             <table class="table align-middle table-nowrap" id="customerTable">
                                                 <thead class="table-light text-muted">
                                                     <tr>
-                                                        <th class="sort" data-sort="order_date" scope="col">Date</th>
+                                                        <th class="sort" data-sort="order_date" scope="col">Member No</th>
                                                         <th class="sort" data-sort="currency_name" scope="col">Name</th>
-                                                        <th class="sort" data-sort="type" scope="col">Type</th>
-                                                        <th class="sort" data-sort="quantity_value" scope="col">Quantity</th>
-                                                        <th class="sort" data-sort="order_value" scope="col">Order Value</th>
-                                                        <th class="sort" data-sort="avg_price" scope="col">Avg Price</th>
-                                                        <th class="sort" data-sort="price" scope="col">Price</th>
+                                                        <th class="sort" data-sort="type" scope="col">Email</th>
+                                                        <th class="sort" data-sort="quantity_value" scope="col">Billing Group</th>
+                                                        <th class="sort" data-sort="order_value" scope="col">Contribution</th>
+                                                        <th class="sort" data-sort="avg_price" scope="col">Global Limit</th>
+                                                        <th class="sort" data-sort="avg_price" scope="col">Balance</th>
+                                                        
                                                         <th class="sort" data-sort="status" scope="col">Status</th>
+                                                        <th class="sort" data-sort="status" scope="col">Action</th>
                                                     </tr>
                                                 </thead><!--end thead-->
                                                 <tbody class="list form-check-all">
-                                                    <tr>
-                                                        <td class="order_date">02 Jan, 2022 <small class="text-muted">03:45PM</small></td> 
-                                                        <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ001</a></td>
+                                                  
+                                                    @forelse ($accounts as $account)
+                                                        <tr>
+                                                        <td class="order_date">{{ $account->memberno }} </td> 
+                                                        
                                                         <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img src="assets/images/svg/crypto-icons/btc.svg" alt="" class="avatar-xxs shadow rounded-circle" />
-                                                                </div>
-                                                                <a href="javascript:void(0);" class="currency_name flex-grow-1 ms-2 text-body">Bitcoin (BTC)</a>
-                                                            </div>
+                                                          {{ $account->name }}
                                                         </td>
-                                                        <td class="type text-success">Buy</td> 
-                                                        <td class="quantity_value">08</td>
-                                                        <td class="order_value">$3,70,683.2</td>
-                                                        <td class="avg_price">$46,154.30</td>
-                                                        <td class="price">$46,335.40</td>
-                                                        <td class="status"><span class="badge badge-soft-success text-uppercase">Successful</span></td>
-                                                    </tr><!--end tr-->
-                                                    <tr>
-                                                        <td class="order_date">27 Dec, 2021 <small class="text-muted">02:47PM</small></td> 
-                                                        <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ001</a></td>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img src="assets/images/svg/crypto-icons/eth.svg" alt="" class="avatar-xxs shadow rounded-circle" />
-                                                                </div>
-                                                                <a href="javascript:void(0);" class="currency_name flex-grow-1 ms-2 text-body">Ethereum (ETH)</a>
-                                                            </div>
+                                                        <td class="type ">{{ $account->email }}</td> 
+                                                        <td class="quantity_value">{{ $account->billinggroup }}</td>
+                                                        <td class="order_value">{{ $account->principal }}</td>
+                                                        <td class="avg_price">{{ $account->globallimit }}</td>
+                                                       <td class="avg_price">{{ $account->balance }}</td>
+                                                        <td class="status">
+                                                             @if ($account->status=='Active')
+                                                                <span
+                                                                class="badge badge-soft-success text-uppercase">{{ $account->status }}</span></td>
+                                                                @elseif ($account->status=='Pending')
+                                                                <span
+                                                                class="badge badge-soft-info text-uppercase">{{ $account->status }}</span></td>
+                                                                 @elseif ($account->status=='Waiting')
+                                                                <span
+                                                                class="badge badge-soft-warning text-uppercase">{{ $account->status.' Period' }}</span></td>
+                                                                 @elseif ($account->status=='Waiting')
+                                                                <span
+                                                                class="badge badge-soft-warning text-uppercase">{{ $account->status.' Period' }}</span></td>
+                                                                 @elseif ($account->status=='Suspended')
+                                                                <span
+                                                                class="badge badge-soft-danger text-uppercase">{{ $account->status }}</span></td>
+                                                            @endif 
+                                                            <td class="avg_price">
+                                                                <a href="/payments/{{ $account->id }}/create"><i class="ri-cash-fill text-info"> Pay</i> </a><br>
+                                                                    <a href="/accounts/{{ $account->id }}/edit" class="mr-5"><i class="ri-edit-2-line  "></i> Edit</a><br>
+                                                         
                                                         </td>
-                                                        <td class="type text-danger">Sell</td> 
-                                                        <td class="quantity_value">50</td>
-                                                        <td class="order_value">$1,87,433</td>
-                                                        <td class="avg_price">$3,744.48</td>
-                                                        <td class="price">$3,748.66</td>
-                                                        <td class="status"><span class="badge badge-soft-danger text-uppercase">Cancelled</span></td>
+                                                            
+                                                        
                                                     </tr><!--end tr-->
-                                                    <tr>
-                                                        <td class="order_date">19 Dec, 2021 <small class="text-muted">10:24AM</small></td> 
-                                                        <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ001</a></td>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img src="assets/images/svg/crypto-icons/xmr.svg" alt="" class="avatar-xxs shadow rounded-circle" />
-                                                                </div>
-                                                                <a href="javascript:void(0);" class="currency_name flex-grow-1 ms-2 text-body">Monero (XMR)</a>
-                                                            </div>
-                                                        </td>
-                                                        <td class="type text-danger">Sell</td> 
-                                                        <td class="quantity_value">150</td>
-                                                        <td class="order_value">$33,982.5</td>
-                                                        <td class="avg_price">$227.30</td>
-                                                        <td class="price">$226.55</td>
-                                                        <td class="status"><span class="badge badge-soft-success text-uppercase">Successful</span></td>
-                                                    </tr><!--end tr-->
-                                                    <tr>
-                                                        <td class="order_date">19 Dec, 2021 <small class="text-muted">11:20AM</small></td> 
-                                                        <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ001</a></td>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img src="assets/images/svg/crypto-icons/mkr.svg" alt="" class="avatar-xxs shadow rounded-circle" />
-                                                                </div>
-                                                                <a href="javascript:void(0);" class="currency_name flex-grow-1 ms-2 text-body">Maker (MKR)</a>
-                                                            </div>
-                                                        </td>
-                                                        <td class="type text-success">Buy</td> 
-                                                        <td class="quantity_value">60</td>
-                                                        <td class="order_value">$1,43,445</td>
-                                                        <td class="avg_price">$2,470.30</td>
-                                                        <td class="price">$2,390.75</td>
-                                                        <td class="status"><span class="badge badge-soft-warning text-uppercase">Pending</span></td>
-                                                    </tr><!--end tr-->
-                                                    <tr>
-                                                        <td class="order_date">11 Dec, 2021 <small class="text-muted">02:47PM</small></td> 
-                                                        <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ001</a></td>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img src="assets/images/svg/crypto-icons/yfi.svg" alt="" class="avatar-xxs shadow rounded-circle" />
-                                                                </div>
-                                                                <a href="javascript:void(0);" class="currency_name flex-grow-1 ms-2 text-body">Yearn.finance  (YFI)</a>
-                                                            </div>
-                                                        </td>
-                                                        <td class="type text-success">Buy</td> 
-                                                        <td class="quantity_value">25</td>
-                                                        <td class="order_value">$9,81,906</td>
-                                                        <td class="avg_price">$37,632.17</td>
-                                                        <td class="price">$39,276.24</td>
-                                                        <td class="status"><span class="badge badge-soft-danger text-uppercase">Cancelled</span></td>
-                                                    </tr><!--end tr-->
-                                                    <tr>
-                                                        <td class="order_date">05 Dec, 2021 <small class="text-muted">09:20AM</small></td> 
-                                                        <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ001</a></td>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img src="assets/images/svg/crypto-icons/mkr.svg" alt="" class="avatar-xxs shadow rounded-circle" />
-                                                                </div>
-                                                                <a href="javascript:void(0);" class="currency_name flex-grow-1 ms-2 text-body">Maker (MKR)</a>
-                                                            </div>
-                                                        </td>
-                                                        <td class="type text-danger">Sell</td> 
-                                                        <td class="quantity_value">20</td>
-                                                        <td class="order_value">$50,243</td>
-                                                        <td class="avg_price">$2,324.65</td>
-                                                        <td class="price">$2,512.15</td>
-                                                        <td class="status"><span class="badge badge-soft-success text-uppercase">Successful</span></td>
-                                                    </tr><!--end tr-->
-                                                    <tr>
-                                                        <td class="order_date">28 Nov, 2021 <small class="text-muted">11:42AM</small></td> 
-                                                        <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ001</a></td>
-                                                        <td class="currency_name">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img src="assets/images/svg/crypto-icons/ltc.svg" alt="" class="avatar-xxs shadow rounded-circle" />
-                                                                </div>
-                                                                <a href="javascript:void(0);" class="currency_name flex-grow-1 ms-2 text-body">Litecoin (LTC)</a>
-                                                            </div>
-                                                        </td>
-                                                        <td class="type text-success">Buy</td> 
-                                                        <td class="quantity_value">200</td>
-                                                        <td class="order_value">$29,500</td>
-                                                        <td class="avg_price">$144.00</td>
-                                                        <td class="price">$147.50</td>
-                                                        <td class="status"><span class="badge badge-soft-warning text-uppercase">Pending</span></td>
-                                                    </tr><!--end tr-->
-                                                    <tr>
-                                                        <td class="order_date">19 Nov, 2021 <small class="text-muted">03:36PM</small></td> 
-                                                        <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ001</a></td>
-                                                        <td class="currency_name">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img src="assets/images/svg/crypto-icons/xmr.svg" alt="" class="avatar-xxs shadow rounded-circle" />
-                                                                </div>
-                                                                <a href="javascript:void(0);" class="currency_name flex-grow-1 ms-2 text-body">Monero (XMR)</a>
-                                                            </div>
-                                                        </td>
-                                                        <td class="type text-danger">Sell</td> 
-                                                        <td class="quantity_value">75</td>
-                                                        <td class="order_value">$17,874</td>
-                                                        <td class="avg_price">$221.61</td>
-                                                        <td class="price">$238.32</td>
-                                                        <td class="status"><span class="badge badge-soft-success text-uppercase">Successful</span></td>
-                                                    </tr><!--end tr-->
-                                                    <tr>
-                                                        <td class="order_date">27 Oct, 2021 <small class="text-muted">03:36PM</small></td> 
-                                                        <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ001</a></td>
-                                                        <td class="currency_name">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img src="assets/images/svg/crypto-icons/dash.svg" alt="" class="avatar-xxs shadow rounded-circle" />
-                                                                </div>
-                                                                <a href="javascript:void(0);" class="currency_name flex-grow-1 ms-2 text-body">Dash (DASH)</a>
-                                                            </div>
-                                                        </td>
-                                                        <td class="type text-success">Buy</td> 
-                                                        <td class="quantity_value">45</td>
-                                                        <td class="order_value">$14,962.5</td>
-                                                        <td class="avg_price">$147.39</td>
-                                                        <td class="price">$142.5</td>
-                                                        <td class="status"><span class="badge badge-soft-danger text-uppercase">Cancelled</span></td>
-                                                    </tr><!--end tr-->
-                                                    <tr>
-                                                        <td class="order_date">27 Oct, 2021 <small class="text-muted">03:36PM</small></td> 
-                                                        <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ001</a></td>
-                                                        <td class="currency_name">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img src="assets/images/svg/crypto-icons/neo.svg" alt="" class="avatar-xxs shadow rounded-circle" />
-                                                                </div>
-                                                                <a href="javascript:void(0);" class="currency_name flex-grow-1 ms-2 text-body">Neo (NEO)</a>
-                                                            </div>
-                                                        </td>
-                                                        <td class="type text-danger">Sell</td> 
-                                                        <td class="quantity_value">36</td>
-                                                        <td class="order_value">$77,232.24</td>
-                                                        <td class="avg_price">$2,274.21</td>
-                                                        <td class="price">$2,145.34</td>
-                                                        <td class="status"><span class="badge badge-soft-warning text-uppercase">Pending</span></td>
-                                                    </tr><!--end tr-->
-                                                    <tr>
-                                                        <td class="order_date">21 Oct, 2021 <small class="text-muted">11:45AM</small></td> 
-                                                        <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ001</a></td>
-                                                        <td class="currency_name">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img src="assets/images/svg/crypto-icons/mln.svg" alt="" class="avatar-xxs shadow rounded-circle" />
-                                                                </div>
-                                                                <a href="javascript:void(0);" class="currency_name flex-grow-1 ms-2 text-body">Enzyme (MLN)</a>
-                                                            </div>
-                                                        </td>
-                                                        <td class="type text-danger">Sell</td> 
-                                                        <td class="quantity_value">68</td>
-                                                        <td class="order_value">$6,296.8</td>
-                                                        <td class="avg_price">$94.21</td>
-                                                        <td class="price">$92.60</td>
-                                                        <td class="status"><span class="badge badge-soft-success text-uppercase">Successful</span></td>
-                                                    </tr><!--end tr-->
-                                                    <tr>
-                                                        <td class="order_date">24 Sep, 2021 <small class="text-muted">02:32AM</small></td> 
-                                                        <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ001</a></td>
-                                                        <td class="currency_name">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img src="assets/images/svg/crypto-icons/eth.svg" alt="" class="avatar-xxs shadow rounded-circle" />
-                                                                </div>
-                                                                <a href="javascript:void(0);" class="currency_name flex-grow-1 ms-2 text-body">Ethereum (ETH)</a>
-                                                            </div>
-                                                        </td>
-                                                        <td class="type text-success">Buy</td> 
-                                                        <td class="quantity_value">72</td>
-                                                        <td class="order_value">$2,69,602.56</td>
-                                                        <td class="avg_price">$3,744.48</td>
-                                                        <td class="price">$3,748.66</td>
-                                                        <td class="status"><span class="badge badge-soft-danger text-uppercase">Cancelled</span></td>
-                                                    </tr><!--end tr-->
+                                                 
+                                                        
+                                                    @empty
+                                                        
+                                                    @endforelse
                                                 </tbody>
                                             </table><!--end table-->
                                             <div class="noresult" style="display: none">

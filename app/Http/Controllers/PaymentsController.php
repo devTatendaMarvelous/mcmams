@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Account;
+use App\Models\Member;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 
-class ClientsController extends Controller
+class PaymentsController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -20,25 +23,22 @@ class ClientsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($type)
+    public function index()
     {
-        if($type=='p'){
-
-            return view('superadmin.clients.clients');
-        }else if($type=='d'){
-            return view('superadmin.clients.clients');
-        }else{
-            return redirect()->back();
-        }
+        $payments=Member::join('payments','payments.member_id','=','members.id')
+        ->join('accounts','accounts.member_id','=','members.id')->get();
+        // dd($payments);
+       return view('superadmin.payments.index')->with('payments',$payments);
     }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        return view('superadmin.payments.create')->with('id',$id);
     }
 
     /**
@@ -47,9 +47,20 @@ class ClientsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-        //
+        $balance= Account::find($id);
+        $balance->balance=$balance->balance+$request->input('amount');
+        $balance->save();
+
+        $payment=new payment();
+        $payment->amount = $request->input('amount');
+        $payment->member_id = $id;
+        $payment->purpose = $request->input('purpose');
+        $payment->referrence=$request->input('referrence');
+        $payment->save();
+        return redirect()->back();
+      
     }
 
     /**

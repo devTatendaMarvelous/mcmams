@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\userProfileController;
 use App\Http\Controllers\MembersController;
+use App\Http\Controllers\PaymentsController;
 
 
 Route::get('/', function () {
@@ -37,6 +38,16 @@ Route::post('/members/create', [MembersController::class, 'store']);
 //==================ACCOUNTS=====================================================================================
 Route::post('/accounts/{id}/store', [AccountsController::class,'store']);
 Route::get('/accounts/{type}', [AccountsController::class,'index']);
+Route::get('/accounts/{id}/edit', [AccountsController::class,'edit']);
+Route::post('/accounts/{id}/update', [AccountsController::class, 'update']);
+
+
+//==================================================================================================================
+
+//==================PAYMENTS=====================================================================================
+Route::get('/payments', [PaymentsController::class, 'index']);
+Route::get('/payments/{id}/create', [PaymentsController::class, 'create']);
+Route::post('/payments/{id}/store', [PaymentsController::class, 'store']);
 
 
 //==================================================================================================================

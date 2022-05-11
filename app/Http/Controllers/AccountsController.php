@@ -8,13 +8,23 @@ use App\Models\Account;
 class AccountsController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index($type)
     {
-     $accounts=Account::all();
+     $accounts=Member::join('accounts','accounts.member_id','=','members.id')->get();
+  
      return view('superadmin.accounts.index')
      ->with('accounts',$accounts);
     }
@@ -60,6 +70,7 @@ class AccountsController extends Controller
             $memberAccount->principal=$contribution;
             $memberAccount->globallimit=$contribution*48;
             $memberAccount->suffix=1;
+            $memberAccount->balance= 0.00;
             $memberAccount->status='Pending';
             $memberAccount->billinggroup=$request->input('billinggroup');
             $memberAccount->memberno='mc-'.count($account);
@@ -94,7 +105,8 @@ class AccountsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $account=Account::find($id);
+        return view('superadmin.accounts.edit')->with('account',$account);
     }
 
     /**
@@ -106,7 +118,21 @@ class AccountsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+
+        $memberAccount =  Account::find($id);
+
+        $contribution = $request->input('principal');
+      
+        $memberAccount->principal = $contribution;
+        $memberAccount->globallimit = $contribution * 48;
+        $memberAccount->suffix = 1;
+        $memberAccount->balance = 0.00;
+        $memberAccount->status =  $request->input('status');
+        $memberAccount->save();
+
+        echo "<script>alert('Account Updated Successfully');</script>";
+        return redirect('/accounts/p');
     }
 
     /**
