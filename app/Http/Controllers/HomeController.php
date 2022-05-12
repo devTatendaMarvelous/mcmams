@@ -25,7 +25,7 @@ class HomeController extends Controller
     public function index()
     {   $members=Member::all();
         $members=count($members);
-       $opened= -25;
+       $opened=2;
         return view('pages.home')->with('opened',$opened)
         ->with('members',$members);
     }

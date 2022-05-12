@@ -59,12 +59,11 @@
                                                             </th>
                                                             <th class="sort" data-sort="name" scope="col">Member Number</th>
                                                             <th class="sort" data-sort="name" scope="col">Name</th>
-                                                            <th class="sort" data-sort="name" scope="col">initials</th>
                                                             <th class="sort" data-sort="surname" scope="col">Surname</th>
                                                             <th class="sort" data-sort="name" scope="col">Amount</th>
                                                             <th class="sort" data-sort="name" scope="col">Referrence Number</th>
                                                             <th class="sort" data-sort="company_name" scope="col">Purpose</th>
-                                                           
+                                                           <th class="sort" data-sort="company_name" scope="col">Date</th>
                                                             <th scope="col">Action</th>
                                                         </tr>
                                                     </thead>
@@ -81,12 +80,11 @@
                                                             <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ001</a></td>
                                                             <td class="name">{{ $payment->memberno }} </td>
                                                             <td class="name">{{ $payment->name }} </td>
-                                                            <td class="company_name">{{ $payment->initials }} </td>
                                                             <td class="name">{{ $payment->surname }} </td>
                                                             <td class="email_id">{{ $payment->amount }}</td>
                                                             <td class="phone">{{ $payment->referrence }}</td>
                                                             <td class="lead_score">{{ $payment->purpose  }}</td>
-                                                            
+                                                            <td class="lead_score">{{ $payment->created_at  }}</td>
                                                             <td>
                                                                 <ul class="list-inline hstack gap-2 mb-0">
                                                                     

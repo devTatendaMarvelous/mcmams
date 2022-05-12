@@ -38,7 +38,7 @@
                            <div class=" col-sm-10 col-12">
                            <div class="card">
                                <div class="card-body">
-                               <canvas id="myChart" ></canvas>
+                               <canvas id="myChart"  style="max-height:900; " ></canvas>
                                 <script>
                                 const ctx = document.getElementById('myChart').getContext('2d');
                                 const myChart = new Chart(ctx, {
@@ -47,7 +47,7 @@
                                         labels: ['Suspended', 'Opened', 'Waiting period', 'Active','Members'],
                                         datasets: [{
                                             label: 'Medical Aid Accounts',
-                                            data: [5, {{ $opened}}, 8,25,{{ $members }}],
+                                            data: [5, 2{{$opened}}, 8,25,{{$members}}],
                                             backgroundColor: [
                                                 'rgba(255, 99, 132, 0.2)',
                                                 'rgba(54, 162, 235, 0.2)',
@@ -65,6 +65,7 @@
                                             borderWidth: 1
                                         }]
                                     },
+                                    
                                     options: {
                                         animations: {
       tension: {
@@ -81,7 +82,9 @@
                                             }
                                         }
                                     }
-                                });
+                                },);
+
+                                
                                 </script>
 
                                </div>

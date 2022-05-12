@@ -13,7 +13,6 @@
                             <div class="col-12">
                                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                                     <h4 class="mb-sm-0">{{ count($members) }} Members</h4>
-<span class="badge badge-label bg-primary"><i class="mdi mdi-circle-medium"></i> Primary</span>
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
                                             <li class="breadcrumb-item"><a href="javascript: void(0);">Members</a></li>
@@ -63,11 +62,6 @@
                                                  <table class="table align-middle table-nowrap mb-0" id="customerTable">
                                                     <thead class="table-light">
                                                         <tr>
-                                                            <th scope="col" style="width: 50px;">
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="checkbox" id="checkAll" value="option">
-                                                                </div>
-                                                            </th>
                                                             <th class="sort" data-sort="name" scope="col">Name</th>
                                                             <th class="sort" data-sort="name" scope="col">initials</th>
                                                             <th class="sort" data-sort="surname" scope="col">Surname</th>
@@ -77,7 +71,6 @@
                                                             <th class="sort" data-sort="email_id" scope="col">Email </th>
                                                             <th class="sort" data-sort="phone" scope="col">Phone </th>
                                                             <th class="sort" data-sort="lead_score" scope="col">Sex</th>
-                                                           
                                                             <th scope="col">Action</th>
                                                         </tr>
                                                     </thead>
@@ -86,11 +79,7 @@
                                                     @forelse ($members as $member )
                                                         
                                                         <tr >
-                                                            <th scope="row">
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="checkbox" name="checkAll" value="option1">
-                                                                </div>
-                                                            </th>
+                                                           
                                                             <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ001</a></td>
                                                             <td class="name">{{ $member->name }} </td>
                                                             <td class="company_name">{{ $member->initials }} </td>
@@ -139,89 +128,8 @@
                                                             </td>
                                                         </tr>
                                                             
-                                                        
+                                            
 
-                                                <!-- Open Account Modal -->
-
-                                                <div class="modal fade" id="exampleModalgrid" tabindex="-1" aria-labelledby="exampleModalgridLabel" aria-modal="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                {{ $member->id }}
-                                                                <h5 class="modal-title" id="exampleModalgridLabel">Open An Account For {{ $member->name }}</h5>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <form action="/accounts/{{ $member->id }}/store" method="POST">
-                                                                    @csrf
-                                                                    <div class="row g-3">
-                                                                        {{-- <div class="col-xxl-6">
-                                                                            <div>
-                                                                                <label for="firstName" class="form-label">Global Limit</label>
-                                                                                <input type="number" class="form-control" name="global"id="firstName" placeholder="$0.00" required>
-                                                                            </div>
-                                                                        </div><!--end col--> --}}
-                                                                        <div class="col-xxl-6">
-                                                                            <div>
-                                                                                <label for="lastName" class="form-label">Principal</label>
-                                                                                <input type="number" class="form-control"name="principal" id="lastName" placeholder="$0.00" required>
-                                                                            </div>
-                                                                        </div><!--end col-->
-                                                                        
-                                                                       <div class="col-xxl-3">
-                                                                           <label for="lastName" class="form-label">Billing Group</label>
-                                                                           <select name="billinggroup" class="form-control" id="">
-                                                                                
-                                                                                <option value="">Billing Group</option>
-                                                                                <option value="principal">Principal</option>
-                                                                                <option value="spouse">Spouse</option>
-                                                                                <option value="child">child</option>
-                                                                                <option value="senior">Senior</option>
-                                                                           </select>
-                                                                        </div><!--end col-->
-                                                                       
-                                                                        <div class="col-lg-12">
-                                                                            <div class="hstack gap-2 justify-content-end">
-                                                                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                                                            </div>
-                                                                        </div><!--end col-->
-                                                                    </div><!--end row-->
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-{{-- ========================================================Open Account Modal End============================================================================================================= --}}
-
-
-{{-- ========================================================Delete Member Modal ============================================================================================================= --}}
-  <div class="modal fade zoomIn" id="deleteRecordModal" tabindex="-1"
-                                            aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btn-close"></button>
-                                                    </div>
-                                                    <div class="modal-body p-5 text-center">
-                                                        <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop" colors="primary:#405189,secondary:#f06548" style="width:90px;height:90px"></lord-icon>
-                                                        <div class="mt-4 text-center">
-                                                            <h4 class="fs-semibold">You are about to delete a contact ?</h4>
-                                                            <p class="text-muted fs-14 mb-4 pt-1">Deleting your contact will remove all of your information from our database.</p>
-                                                            <div class="hstack gap-2 justify-content-center remove">
-                                                                <form action="/members">
-                                                                      <a class="btn btn-link link-success fw-medium text-decoration-none" data-bs-dismiss="modal"><i class="ri-close-line me-1 align-middle"></i> Close</a>
-                                                                        
-                                                                      <input type="submit" value="Yes Delete" class="btn btn-danger" >
-                                                                </form>
-                                                              
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-         {{-- ========================================================Delete Member Modal End============================================================================================================= --}}
 
                                                    
                                                         @empty
@@ -373,7 +281,34 @@
         </div>
         <!-- END layout-wrapper -->
 
-        
+        {{-- ========================================================Delete Member Modal ============================================================================================================= --}}
+                                        <div class="modal fade zoomIn" id="deleteRecordModal" tabindex="-1"
+                                            aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btn-close"></button>
+                                                    </div>
+                                                    <div class="modal-body p-5 text-center">
+                                                        <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop" colors="primary:#405189,secondary:#f06548" style="width:90px;height:90px"></lord-icon>
+                                                        <div class="mt-4 text-center">
+                                                            <h4 class="fs-semibold">You are about to delete a contact ?</h4>
+                                                            <p class="text-muted fs-14 mb-4 pt-1">Deleting your contact will remove all of your information from our database.</p>
+                                                            <div class="hstack gap-2 justify-content-center remove">
+                                                                <form action="/members">
+                                                                      <a class="btn btn-link link-success fw-medium text-decoration-none" data-bs-dismiss="modal"><i class="ri-close-line me-1 align-middle"></i> Close</a>
+                                                                        
+                                                                      <input type="submit" value="Yes Delete" class="btn btn-danger" >
+                                                                </form>
+                                                              
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+         {{-- ========================================================Delete Member Modal End============================================================================================================= --}}
+
 
 
       @endsection
