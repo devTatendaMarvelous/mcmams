@@ -41,12 +41,7 @@
                                                                 <form action="/accounts/{{ $member->id }}/store" method="POST">
                                                                     @csrf
                                                                     <div class="row g-3">
-                                                                        {{-- <div class="col-xxl-6">
-                                                                            <div>
-                                                                                <label for="firstName" class="form-label">Global Limit</label>
-                                                                                <input type="number" class="form-control" name="global"id="firstName" placeholder="$0.00" required>
-                                                                            </div>
-                                                                        </div><!--end col--> --}}
+                                                                    
                                                                         <div class="col-xxl-6">
                                                                             <div>
                                                                                 <label for="lastName" class="form-label">Principal</label>

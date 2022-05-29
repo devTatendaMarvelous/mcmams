@@ -47,7 +47,7 @@
                                         labels: ['Suspended', 'Opened', 'Waiting period', 'Active','Members'],
                                         datasets: [{
                                             label: 'Medical Aid Accounts',
-                                            data: [5, 2{{$opened}}, 8,25,{{$members}}],
+                                            data: [5, 45, 8,25,67],
                                             backgroundColor: [
                                                 'rgba(255, 99, 132, 0.2)',
                                                 'rgba(54, 162, 235, 0.2)',
