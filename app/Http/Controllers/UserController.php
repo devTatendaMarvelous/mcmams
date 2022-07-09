@@ -30,21 +30,6 @@ class UserController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-        ]);
-    }
 
     /**
      * Create a new user instance after a valid registration.
@@ -54,14 +39,21 @@ class UserController extends Controller
      */
     protected function create(Request $request)
     {
+
         try {
-            $user=new User();
-            $user->name=$request->input('name');
-            $user->email=$request->email;
-            $user->password=Hash::make($request->input('password'));
-            $user->role='Member';
-            $user->photo='nomedia.png';
-            $user->save();
+
+            $user=$request->validate([
+
+                'name'=>'required',
+                'email'=> ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password'=>'required',
+            ] );
+
+            $user['password']=Hash::make($user['password']);
+
+            $user['role']='Member';
+            $user['photo']='nomedia.png';
+            User::create($user);
             return redirect('/users');
         }
         catch (\Exception $e) {
@@ -115,8 +107,8 @@ class UserController extends Controller
        try {
               $user = User::findOrFail($id);
               $user ->delete();
-                echo "<script>alert('User Deleted Successfully!!');</script>";
-              return redirect()->back();
+               
+              return back();
          }catch (\Exception $exception){
           return redirect()->back()->with('error', 'An error occured while processing your request',$exception);
          }

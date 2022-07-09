@@ -32,7 +32,8 @@ route::post('/users/{id}/store', [UserController::class, 'updateUser']);
 
 // ==========MEMBERS=================================================================================
 Route::get('/members',[MembersController::class, 'index']);
-Route::post('/members/create', [MembersController::class, 'store']);
+Route::get('/members/create', [MembersController::class, 'create']);
+Route::post('/members/store', [MembersController::class, 'store']);
 // ==============================================================================================================
 
 //==================ACCOUNTS=====================================================================================

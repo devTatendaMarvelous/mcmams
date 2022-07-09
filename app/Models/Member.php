@@ -9,6 +9,19 @@ class Member extends Model
 {
     use HasFactory;
     protected $table='members';
+    protected $fillable=[
+        'name',
+            'surname',
+            'initials',
+            'dob',
+            'natId',
+            'email',
+            'phone',
+            'sex',
+            'ailments',
+            'address',
+    ];
+
     public function dependends(){
 
         return $this->hasMany(Dependend::class);

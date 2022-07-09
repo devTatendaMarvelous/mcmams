@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Account;
 use App\Models\Dependend;
 use App\Models\Member;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class MembersController extends Controller
@@ -41,7 +42,7 @@ class MembersController extends Controller
      */
     public function create()
     {
-        
+        return view('superadmin.members.create');   
     }
 
     /**
@@ -52,19 +53,20 @@ class MembersController extends Controller
      */
     public function store(Request $request)
     {
-        $member=new Member();
-        $member->name=$request->input('name');
-        $member->surname = $request->input('surname');
-        $member->initials = $request->input('initials');
-        $member->dob = $request->input('dob');
-        $member->natId = $request->input('natId');
-        $member->company = $request->input('company');
-        $member->email = $request->input('email');
-        $member->phone = $request->input('phone');
-        $member->sex = $request->input('sex');
-        $member->address = $request->input('address');
-        $member->memberno="NA";
-        $member->save();
+        $member=$request->validate([
+            'name'=>'required',
+            'surname'=>'required',
+            'initials'=>'nullable',
+            'dob'=>'required',
+            'natId'=>'required',
+            'email'=> ['required', 'string', 'email', 'max:255', 'unique:members'],
+            'phone'=>['required', 'min:10', 'max:10'],
+            'sex'=>'required',
+            'ailments'=>'nullable',
+            'address'=>'required',
+        ]);
+
+        Member::create($member);
 
         return redirect('/members');
     }

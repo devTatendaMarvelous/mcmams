@@ -1,5 +1,4 @@
-@extends('layouts.dash')
-@section('content')
+<x-dash>
             <!-- ============================================================== -->
             <!-- Start right Content here -->
             <!-- ============================================================== -->
@@ -40,7 +39,7 @@
                                             <button type="button" id="grid-view-button" class="btn btn-soft-info nav-link btn-icon fs-14 active filter-button shadow-none"><i class="ri-grid-fill"></i></button>
                                             <button type="button" id="list-view-button" class="btn btn-soft-info nav-link  btn-icon fs-14 filter-button shadow-none"><i class="ri-list-unordered"></i></button>
                                            
-                                            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addmembers"><i class="ri-add-fill me-1 align-bottom"></i> Add Members</button>
+                                            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addmembers"><i class="ri-add-fill me-1 align-bottom"></i> Add User</button>
                                         </div>
                                     </div><!--end col-->
                                 </div><!--end row-->
@@ -118,7 +117,7 @@
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="myModalLabel">Add New Members</h5>
+                                                    <h5 class="modal-title" id="myModalLabel">Add New User</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
@@ -322,4 +321,4 @@
                         
                     </div><!-- container-fluid -->
                 </div><!-- End Page-content -->
-@endsection
+            </x-dash>

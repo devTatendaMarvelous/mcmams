@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('surname');
             $table->string('initials')->nullable();
             $table->date('dob');
-            $table->string('company');
+            $table->mediumText('ailments')->nullable();
             $table->string('phone');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('natId');
             $table->char('sex');
             $table->mediumText('address');
