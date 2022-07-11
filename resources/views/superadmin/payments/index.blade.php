@@ -1,5 +1,4 @@
-@extends('layouts.dash')
-@section('content')
+<x-dash>
             <!-- ============================================================== -->
             <!-- Start right Content here -->
             <!-- ============================================================== -->
@@ -145,100 +144,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                            aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content border-0">
-                                                    <div class="modal-header bg-soft-info p-3">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Add Member</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
-                                                    </div>
-                                                    <form action="/members/create" method="POST">
-                                                        @csrf
-                                                        <div class="modal-body">
-                                                            <input type="hidden" id="id-field" />
-                                                            <div class="row g-3">
-                                                                <div class="col-lg-12">
-                                                                    <div>
-                                                                        <label for="name-field" class="form-label">Name</label>
-                                                                        <input type="text" id="customername-field" name="name" class="form-control" placeholder="Enter name" required />
-                                                                    </div>
-                                                                </div>
-                                                                 <div class="col-lg-12">
-                                                                    <div>
-                                                                        <label for="name-field" class="form-label">Surname</label>
-                                                                        <input type="text" id="customername-field" name="surname" class="form-control" placeholder="Enter surname" required />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-12">
-                                                                    <div>
-                                                                        <label for="name-field" class="form-label">Initials</label>
-                                                                        <input type="text" id="customername-field" name="initials" class="form-control" placeholder="Enter initials" required />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-12">
-                                                                    <div>
-                                                                        <label for="name-field" class="form-label">Date Of Birth</label>
-                                                                        <input type="date" id="customername-field" name="dob" class="form-control" placeholder="Enter name" required />
-                                                                    </div>
-                                                                </div>
-                                                                 <div class="col-lg-12">
-                                                                    <div>
-                                                                        <label for="name-field" class="form-label">National ID</label>
-                                                                        <input type="text" id="customername-field" name="natId" class="form-control" placeholder="National ID" required />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-12">
-                                                                    <div>
-                                                                        <label for="company_name-field" class="form-label">Company Name</label>
-                                                                        <input type="text" id="company_name-field" name="company" class="form-control" placeholder="Enter company name" required />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-12">
-                                                                    <div>
-                                                                        <label for="email_id-field" class="form-label">Email </label>
-                                                                        <input type="email" id="email_id-field" class="form-control" name="email"  placeholder="Enter email" required />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-6">
-                                                                    <div>
-                                                                        <label for="phone-field" class="form-label">Phone</label>
-                                                                        <input type="number" id="phone-field" class="form-control" name="phone" placeholder="Enter phone no" required />
-                                                                    </div>
-                                                                </div>
-                                                                
-                                                                <div class="col-lg-6">
-                                                                    <div><label for="lead_score-field" class="form-label">Sex</label>
-                                                                        <select name="sex" id="" class="form-control" required>
-                                                                            <option value="">Sex</option>
-                                                                            <option value="M">Male</option>
-                                                                            <option value="F">Female</option>
-                                                                            
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                
-                                                                <div class="col-lg-12">
-                                                                    <div>
-                                                                        <label for="lead_score-field" class="form-label">Address</label>
-                                                                        <textarea name="address" id="" cols="30" class="form-control"  placeholder="Address" required rows="10"></textarea>
-                                                                    
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <div class="hstack gap-2 justify-content-end">
-                                                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                                <input type="submit" class="btn btn-success" value="Add" >
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div><!--end add modal-->
-                                            
                                       
 
                                     </div>
@@ -259,6 +164,4 @@
         <!-- END layout-wrapper -->
 
         
-
-
-      @endsection
+</x-dash>

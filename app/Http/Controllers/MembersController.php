@@ -58,7 +58,7 @@ class MembersController extends Controller
             'surname'=>'required',
             'initials'=>'nullable',
             'dob'=>'required',
-            'natId'=>'required',
+            'natId'=>['required','unique:members'],
             'email'=> ['required', 'string', 'email', 'max:255', 'unique:members'],
             'phone'=>['required', 'min:10', 'max:10'],
             'sex'=>'required',

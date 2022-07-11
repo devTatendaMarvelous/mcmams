@@ -18,7 +18,7 @@
                             <div class="col-lg-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h4 class="card-title mb-0">Add, Edit & Remove</h4>
+                                        <h4 class="card-title mb-0">AVAILABLE PRODUCTS</h4>
                                     </div><!-- end card header -->
 
                                     <div class="card-body">
@@ -48,29 +48,26 @@
                                                                     <input class="form-check-input" type="checkbox" id="checkAll" value="option">
                                                                 </div>
                                                             </th>
-                                                            <th class="sort" data-sort="customer_name">Customer</th>
-                                                            <th class="sort" data-sort="email">Email</th>
-                                                            <th class="sort" data-sort="phone">Phone</th>
-                                                            <th class="sort" data-sort="date">Joining Date</th>
-                                                            <th class="sort" data-sort="status">Delivery Status</th>
+                                                            <th class="sort" data-sort="customer_name">Name</th>
+                                                            <th class="sort" data-sort="email">Contribution</th>
+                                                            <th class="sort" data-sort="phone">Limit</th>
                                                             <th class="sort" data-sort="action">Action</th>
                                                             </tr>
                                                     </thead>
                                                     <tbody class="list form-check-all">
                                                       
                                                            
-                                                        <tr>
+                                                    @forelse ($products as $product )
+                                                            <tr>
                                                             <th scope="row">
                                                                 <div class="form-check">
                                                                     <input class="form-check-input" type="checkbox" name="checkAll" value="option4">
                                                                 </div>
                                                             </th>
-                                                            <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ2104</a></td>
-                                                            <td class="customer_name">Michael Morris</td>
-                                                            <td class="email">michaelmorris@velzon.com</td>
-                                                            <td class="phone">805-447-8398</td>
-                                                            <td class="date">19 May, 2021</td>
-                                                            <td class="status"><span class="badge badge-soft-danger text-uppercase">Block</span></td>
+                                                           
+                                                            <td class="customer_name">{{ $product->name }}</td>
+                                                            <td class="email">${{ $product->contribution }}</td>
+                                                            <td class="phone">${{ $product->limit }}</td>
                                                             <td>
                                                                 <div class="d-flex gap-2">
                                                                     <div class="edit">
@@ -83,6 +80,9 @@
                                                                 </div>
                                                             </td>
                                                         </tr>
+                                                    @empty
+                                                        
+                                                    @endforelse
 
                                                        
 

@@ -14,7 +14,8 @@ class ProductsController extends Controller
      */
     public function index()
     {
-      return view('superadmin.products.index');
+        $products=Product::all();
+      return view('superadmin.products.index')->with('products', $products);
     }
 
     /**

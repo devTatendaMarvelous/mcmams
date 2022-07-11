@@ -25,7 +25,7 @@ class PaymentsController extends Controller
      */
     public function index()
     {
-        $payments=Member::join('payments','payments.member_id','=','members.id')
+        $payments=Member::join('payments','payments.account_id','=','members.id')
         ->join('accounts','accounts.member_id','=','members.id')->get();
         // dd($payments);
        return view('superadmin.payments.index')->with('payments',$payments);
@@ -49,17 +49,23 @@ class PaymentsController extends Controller
      */
     public function store(Request $request,$id)
     {
+        $payment=$request->validate([
+            'amount'=>['required'],
+            'referrence'=>'required',
+            'purpose'=>'required',
+
+        ]);
+
+        // =========UPDATING THE BALANCE==============
         $balance= Account::find($id);
         $balance->balance=$balance->balance+$request->input('amount');
         $balance->save();
-
-        $payment=new payment();
-        $payment->amount = $request->input('amount');
-        $payment->member_id = $id;
-        $payment->purpose = $request->input('purpose');
-        $payment->referrence=$request->input('referrence');
-        $payment->save();
-        return redirect()->back();
+//=================================================================
+//================CREATING A PAYMENT===========
+       
+        $payment['account_id'] = $id;
+        Payment::create($payment);
+        return redirect('/accounts');
       
     }
 

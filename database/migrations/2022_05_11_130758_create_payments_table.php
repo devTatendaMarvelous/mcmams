@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('member_id')->references('id')->on('members')->onDelete('cascade');
+            $table->foreignId('account_id')->references('id')->on('accounts')->onDelete('cascade');
             $table->float('amount');
             $table->string('referrence')->unique();
             $table->string('purpose');
