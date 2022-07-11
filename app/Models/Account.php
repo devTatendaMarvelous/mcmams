@@ -9,6 +9,21 @@ class Account extends Model
 {
     use HasFactory;
     protected $table='accounts';
+    protected $fillable=[
+
+       
+            'member_id',
+            'suffix',
+            'balance',
+            'claimed',
+            'status',
+            'memberno',
+    ];
+
+     public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 
     public function members(){
         return $this->belongsTo(Member::class);
@@ -17,4 +32,6 @@ class Account extends Model
     {
         return $this->belongsTo(Dependend::class);
     }
+
+
 }

@@ -1,5 +1,4 @@
-@extends('layouts.dash')
-@section('content')
+<x-dash>
             <!-- ============================================================== -->
             <!-- Start right Content here -->
             <!-- ============================================================== -->
@@ -48,12 +47,14 @@
                                                     <tr>
                                                         <th class="sort" data-sort="order_date" scope="col">Member No</th>
                                                         <th class="sort" data-sort="currency_name" scope="col">Name</th>
+                                                         <th class="sort" data-sort="currency_name" scope="col">Initials</th>
+                                                          <th class="sort" data-sort="currency_name" scope="col">Surname</th>
                                                         <th class="sort" data-sort="type" scope="col">Email</th>
-                                                        <th class="sort" data-sort="quantity_value" scope="col">Billing Group</th>
+                                                        <th class="sort" data-sort="quantity_value" scope="col">Medical Aid Plan</th>
                                                         <th class="sort" data-sort="order_value" scope="col">Contribution</th>
                                                         <th class="sort" data-sort="avg_price" scope="col">Global Limit</th>
-                                                        <th class="sort" data-sort="avg_price" scope="col">Balance</th>
-                                                        
+                                                        <th class="sort" data-sort="avg_price" scope="col">Claimed</th>
+                                                         <th class="sort" data-sort="avg_price" scope="col">Balance</th>
                                                         <th class="sort" data-sort="status" scope="col">Status</th>
                                                         <th class="sort" data-sort="status" scope="col">Action</th>
                                                     </tr>
@@ -67,27 +68,34 @@
                                                         <td>
                                                           {{ $account->name }}
                                                         </td>
+                                                        <td>
+                                                          {{ $account->initials }}
+                                                        </td>
+                                                        <td>
+                                                          {{ $account->surname }}
+                                                        </td>
                                                         <td class="type ">{{ $account->email }}</td> 
-                                                        <td class="quantity_value">{{ $account->billinggroup }}</td>
-                                                        <td class="order_value">{{ $account->principal }}</td>
-                                                        <td class="avg_price">{{ $account->globallimit }}</td>
+                                                        <td class="quantity_value">Basic Care</td>
+                                                        <td class="order_value">{{ $account->contribution }}</td>
+                                                        <td class="avg_price">{{ $account->limit }}</td>
+                                                         <td class="avg_price">{{ $account->claimed }}</td>
                                                        <td class="avg_price">{{ $account->balance }}</td>
                                                         <td class="status">
-                                                             @if ($account->status=='Active')
-                                                                <span
-                                                                class="badge badge-soft-success text-uppercase">{{ $account->status }}</span></td>
-                                                                @elseif ($account->status=='Pending')
-                                                                <span
-                                                                class="badge badge-soft-info text-uppercase">{{ $account->status }}</span></td>
+                                                             @if ($account->status=='ACTIVE')
+                                                                <h2
+                                                                class="badge badge-soft-success text-uppercase">{{ $account->status }}</h2></td>
+                                                                @elseif ($account->status=='')
+                                                                <h2
+                                                                class="badge badge-soft-info text-uppercase">{{ $account->status }}</h2></td>
                                                                  @elseif ($account->status=='Waiting')
-                                                                <span
-                                                                class="badge badge-soft-warning text-uppercase">{{ $account->status.' Period' }}</span></td>
-                                                                 @elseif ($account->status=='Waiting')
-                                                                <span
-                                                                class="badge badge-soft-warning text-uppercase">{{ $account->status.' Period' }}</span></td>
+                                                                <h2
+                                                                class="btn badge-soft-warning text-uppercase">{{ $account->status.' Period' }}</h2></td>
+                                                                 @elseif ($account->status=='WAITING')
+                                                                <h2
+                                                                class="btn btn-warning text-uppercase">{{ $account->status.' Period' }}</h2></td>
                                                                  @elseif ($account->status=='Suspended')
-                                                                <span
-                                                                class="badge badge-soft-danger text-uppercase">{{ $account->status }}</span></td>
+                                                                <h2
+                                                                class="badge badge-soft-danger text-uppercase">{{ $account->status }}</h2></td>
                                                             @endif 
                                                             <td class="avg_price">
                                                                 <a href="/payments/{{ $account->id }}/create"><i class="ri-cash-fill text-info"> Pay</i> </a><br>
@@ -133,4 +141,4 @@
                 </div>
             </div>
                 <!-- End Page-content -->
-@endsection
+</x-dash>

@@ -18,10 +18,9 @@ return new class extends Migration
             $table->foreignId('member_id')->references('id')->on('members')->onDelete('cascade');
             $table->string('memberno');
             $table->integer('suffix');
-            $table->float('globallimit');
-            $table->float('principal');
             $table->float('balance');
-            $table->string('billinggroup');
+            $table->float('claimed');
+           
             $table->string('status');
             $table->timestamps();
         });
@@ -36,4 +35,5 @@ return new class extends Migration
     {
         Schema::dropIfExists('accounts');
     }
+
 };

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Member;
 use App\Models\Account;
+use App\Models\Product;
+
 class AccountsController extends Controller
 {
     /**
@@ -21,9 +23,11 @@ class AccountsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($type)
+    public function index()
     {
-     $accounts=Member::join('accounts','accounts.member_id','=','members.id')->get();
+        
+     $accounts=Product::join('members','members.product_id','=','products.id')
+                    ->join('accounts','accounts.member_id','=','members.id')->get();
   
      return view('superadmin.accounts.index')
      ->with('accounts',$accounts);
@@ -34,7 +38,7 @@ class AccountsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function open($id)
 
     {
         $member=Member::findorfail($id);
@@ -49,35 +53,64 @@ class AccountsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$id)
+    public function store(Request $request, $id)
     {
 
+
+        
         $account=Account::all()->where('member_id',$id);
+        $allAccounts=Account::all();
 
         if(count($account)>0){
 
             echo "<script>alert('The member already has an account!!');</script>";
-            return redirect()->back();
+            // return redirect()->back();
 
         }else{
 
 
 
-             $memberAccount=new Account();
+             $memberAccount=$request->validate([
+                'product_id'=>'required',
+             ]);
 
-            $contribution = $request->input('principal');
-            $memberAccount->member_id=$id;
-            $memberAccount->principal=$contribution;
-            $memberAccount->globallimit=$contribution*48;
-            $memberAccount->suffix=1;
-            $memberAccount->balance= 0.00;
-            $memberAccount->status='Pending';
-            $memberAccount->billinggroup=$request->input('billinggroup');
-            $memberAccount->memberno='mc-'.count($account);
-            $memberAccount->save();
+           
+            $memberAccount['member_id']=$id;
+           
+            $memberAccount['suffix']=1;
+            $memberAccount['balance']= 0.00;
+            $memberAccount['claimed']= 0.00;
+            $memberAccount['status']='WAITING';
+
+            if($request->product_id==1){
+                if(count($allAccounts)>0){
+                    $memberAccount['memberno']='BC-'.count($account);
+                }else{
+                    $memberAccount['memberno']='BC-0001';
+                     
+                }
+                
+            }elseif($request->product_id==2){
+                if(count($allAccounts)>0){
+                    $memberAccount['memberno']='MC-'.count($account);
+                }else{
+                    $memberAccount['memberno']='MC-0001';
+                }
+                
+            }elseif($request->product_id==3){
+                if(count($allAccounts)>0){
+                    $memberAccount['memberno']='PT-'.count($account);
+                }else{
+                    $memberAccount['memberno']='PT-0001';
+                }
+                
+            }
+        
+            
+           Account::create($memberAccount);
 
             echo "<script>alert('Account Created Successfully');</script>";
-            return redirect()->back();
+            return redirect('/accounts');
             
     
         }

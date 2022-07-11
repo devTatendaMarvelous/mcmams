@@ -1,5 +1,4 @@
-@extends('layouts.dash')
-@section('content')
+<x-dash>
    <!-- Start right Content here -->
         <!-- ============================================================== -->
         <div class="main-content">
@@ -100,4 +99,4 @@
             </div>
             <!-- End Page-content -->
 
-                   @endsection
+</x-dash>

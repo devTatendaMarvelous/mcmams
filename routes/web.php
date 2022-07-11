@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountsController;
-use App\Http\Controllers\ClientsController;
+use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\DependendsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -27,6 +27,7 @@ Route::post('/users/create',[UserController::class,'create']);
 Route::get('/users/{id}/edit', [UserController::class, 'edit']);
 Route::get('/users/{id}/delete', [UserController::class, 'deleteUser']);
 route::post('/users/{id}/store', [UserController::class, 'updateUser']);
+
 // =============================================================================================================
 
 
@@ -34,11 +35,14 @@ route::post('/users/{id}/store', [UserController::class, 'updateUser']);
 Route::get('/members',[MembersController::class, 'index']);
 Route::get('/members/create', [MembersController::class, 'create']);
 Route::post('/members/store', [MembersController::class, 'store']);
+Route::get('/members/{id}/edit', [MembersController::class,'edit']);
+Route::post('/members/{id}/update', [MembersController::class,'update']);
 // ==============================================================================================================
 
 //==================ACCOUNTS=====================================================================================
+Route::get('/accounts/{id}/open', [AccountsController::class,'open']);
 Route::post('/accounts/{id}/store', [AccountsController::class,'store']);
-Route::get('/accounts/{type}', [AccountsController::class,'index']);
+Route::get('/accounts', [AccountsController::class,'index']);
 Route::get('/accounts/{id}/edit', [AccountsController::class,'edit']);
 Route::post('/accounts/{id}/update', [AccountsController::class, 'update']);
 
@@ -54,10 +58,19 @@ Route::post('/payments/{id}/store', [PaymentsController::class, 'store']);
 //==================================================================================================================
 
 
-// ==========   DEPEMDENDS=================================================================================
+// ==========   DEPENDENDS=================================================================================
 Route::get('dependends/{id}/add', [DependendsController::class, 'index']);
 Route::post('/dependends/{id}/store', [DependendsController::class, 'store']);
 Route::get('/dependends/{id}/show',[DependendsController::class,'show']);
+// ==============================================================================================================
+
+
+
+// ==========   PRODUCTS=================================================================================
+Route::get('products', [ProductsController::class, 'index']);
+Route::get('products/create', [ProductsController::class, 'create']);
+Route::post('/products/store', [ProductsController::class, 'store']);
+Route::get('/products/{id}/show',[ProductsController::class,'show']);
 // ==============================================================================================================
 
 Auth::routes();

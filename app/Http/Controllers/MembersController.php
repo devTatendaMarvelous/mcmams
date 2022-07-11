@@ -64,7 +64,10 @@ class MembersController extends Controller
             'sex'=>'required',
             'ailments'=>'nullable',
             'address'=>'required',
+            'product_id'=>'required',
         ]);
+
+        $member['photo']='nomedia.png';
 
         Member::create($member);
 
@@ -93,7 +96,8 @@ class MembersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $member=Member::find($id);
+        return view('superadmin.members.edit')->with('member', $member);
     }
 
     /**
@@ -105,7 +109,23 @@ class MembersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $member=Member::find($id);
+         $fields=$request->validate([
+            'name'=>'required',
+            'surname'=>'required',
+            'initials'=>'nullable',
+            'dob'=>'required',
+            'natId'=>'required',
+            'email'=> ['required', 'string', 'email', 'max:255'],
+            'phone'=>['required', 'min:10', 'max:10'],
+            'sex'=>'required',
+            'ailments'=>'nullable',
+            'address'=>'required',
+        ]);
+
+       $member->update($fields);
+
+        return redirect('/members');
     }
 
     /**

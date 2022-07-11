@@ -1,5 +1,4 @@
-@extends('layouts.dash')
-@section('content')
+<x-dash>
  <div class="main-content">
         <div class="page-content">
                 <div class="container-fluid">
@@ -36,37 +35,37 @@
                                 <div class="card-body">
                                     <div class="live-preview">
                                         @csrf
-                                                                    <div class="row g-3">
-                                                                      
-                                                                        <div class="col-xxl-6">
-                                                                            <div>
-                                                                                <label for="lastName" class="form-label">Amount</label>
-                                                                                <input type="number" class="form-control"name="amount" id="lastName" placeholder="$0.00" required>
-                                                                            </div>
-                                                                        </div><!--end col-->
-                                                                        
-                                                                       <div class="col-xxl-3">
-                                                                           <label for="lastName" class="form-label">Referrence Number</label>
-                                                                           <input type="text" name="referrence" placeholder="Referrence Number" class="form-control" >
-                                                                        </div><!--end col-->
+                                            <div class="row g-3">
+                                                
+                                                <div class="col-xxl-6">
+                                                    <div>
+                                                        <label for="lastName" class="form-label">Amount</label>
+                                                        <input type="number" class="form-control"name="amount" id="lastName" placeholder="$0.00" >
+                                                    </div>
+                                                </div><!--end col-->
+                                                
+                                                <div class="col-xxl-3">
+                                                    <label for="lastName" class="form-label">Referrence Number</label>
+                                                    <input type="text" name="referrence" placeholder="Referrence Number" class="form-control" >
+                                                </div><!--end col-->
 
-                                                                         <div class="col-xxl-3">
-                                                                           <label for="lastName" class="form-label">Purpose</label>
-                                                                           <select name="purpose" class="form-control" id="">
-                                                                                
-                                                                                <option value="Contribution">Contribution</option>
-                                                                                <option value="Penalty">Penalty</option>
-                                                                                <option value="Advance">Advance</option>
-                                                                           </select>
-                                                                        </div><!--end col-->
-                                                                       
-                                                                        <div class="col-lg-12">
-                                                                            <div class="hstack gap-2 justify-content-end">
-                                                                                
-                                                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                                                            </div>
-                                                                        </div><!--end col-->
-                                                                    </div><!--end row-->
+                                                    <div class="col-xxl-3">
+                                                    <label for="lastName" class="form-label">Purpose</label>
+                                                    <select name="purpose" class="form-control" id="">
+                                                        
+                                                        <option value="Contribution">Contribution</option>
+                                                        <option value="Penalty">Penalty</option>
+                                                        <option value="Advance">Advance</option>
+                                                    </select>
+                                                </div><!--end col-->
+                                                
+                                                <div class="col-lg-12">
+                                                    <div class="hstack gap-2 justify-content-end">
+                                                        
+                                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                                    </div>
+                                                </div><!--end col-->
+                                            </div><!--end row-->
                                     </div>
                                     
                                 </div>
@@ -80,5 +79,4 @@
                 </div>
         </div>
      </div>
-
-@endsection
+</x-dash>

@@ -26,6 +26,13 @@
     <link href="{{ asset('assets/css/app.min.css')}}" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
     <link href="{{ asset('assets/css/custom.min.css')}}" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+    
 </head>
 
 <body>
@@ -183,7 +190,27 @@
                             </a>
                             
                         </li>
-                       
+                       <li class="nav-item">
+                            <a class="nav-link menu-link"
+                            @if (auth::user()->role=='Member')
+                            style="display:none;"
+                               
+                           @endif href="#products" data-bs-toggle="collapse" role="button"
+                                aria-expanded="false" aria-controls="products">
+                                <i class=" ri-user-fill "></i> <span data-key="t-layouts">Products</span>
+                            </a>
+                            <div class="collapse menu-dropdown" id="products">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="/products" class="nav-link"  data-key="t-horizontal">All Products</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/products/create" class="nav-link"  data-key="t-detached">Add Product</a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </li> <!-- end Dashboard Menu -->
                          <li class="nav-item">
                             <a class="nav-link menu-link"
                             @if (auth::user()->role=='Member')
@@ -217,7 +244,7 @@
                             <div class="collapse menu-dropdown" id="sidebarLayouts">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="/accounts/principal" class="nav-link"  data-key="t-horizontal">Principal Members</a>
+                                        <a href="/accounts/" class="nav-link"  data-key="t-horizontal">All Accounts</a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="/" class="nav-link"  data-key="t-detached">Dependends</a>
@@ -408,6 +435,24 @@
         <script src="assets/js/pages/crypto-orders.init.js"></script>
     <!-- App js -->
     <script src="{{ asset('assets/js/app.js')}}"></script>
+
+
+
+
+
+        <!-- JAVASCRIPT -->
+       
+        <!-- prismjs plugin -->
+        <script src="assets/libs/prismjs/prism.js"></script>
+        <script src="assets/libs/list.js/list.min.js"></script>
+        <script src="assets/libs/list.pagination.js/list.pagination.min.js"></script>
+
+        <!-- listjs init -->
+        <script src="assets/js/pages/listjs.init.js"></script>
+
+      
+
+
 </body>
 
 </html>

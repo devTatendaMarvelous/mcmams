@@ -102,7 +102,7 @@
                                                                             </button>
                                                                             <ul class="dropdown-menu dropdown-menu-end">
                                                                                 @forelse ($accounts as $account)
-                                                                                    @if ($account->memvber_id==$member->id<0))
+                                                                                    @if ($account->ower_id==$member->id<0))
                                                                                     <li><a class="dropdown-item" href="/dependends/{{ $member->id }}/show"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View Dependends</a></li>
                                                                                     <li><a class="dropdown-item" href="/dependends/{{ $member->id }}/add"><i class="ri-add-fill align-bottom me-2 text-muted"></i>Add Depended</a></li>
                                                                               

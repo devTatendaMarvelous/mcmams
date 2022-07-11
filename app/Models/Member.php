@@ -20,6 +20,9 @@ class Member extends Model
             'sex',
             'ailments',
             'address',
+             'photo',
+             'product_id',
+
     ];
 
     public function dependends(){

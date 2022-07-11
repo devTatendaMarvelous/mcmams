@@ -1,5 +1,4 @@
-@extends('layouts.dash')
-@section('content')
+<x-dash>
  <div class="main-content">
         <div class="page-content">
                 <div class="container-fluid">
@@ -36,42 +35,42 @@
                                 <div class="card-body">
                                     <div class="live-preview">
                                         @csrf
-                                                                    <div class="row g-3">
-                                                                      
-                                                                        <div class="col-xxl-6">
-                                                                            <div>
-                                                                                <label for="lastName" class="form-label">Principal</label>
-                                                                                <input type="number" class="form-control"name="principal" value="{{ $account->principal }}" id="lastName" placeholder="$0.00" required>
-                                                                            </div>
-                                                                        </div><!--end col-->
-                                                                        
-                                                                       <div class="col-xxl-3">
-                                                                           <label for="lastName" class="form-label">Billing Group</label>
-                                                                           <select name="billinggroup" class="form-control" id="">
-                                                                                
-                                                                                <option value="">{{ $account->billinggroup }}</option>
-                                                                                
-                                                                           </select>
-                                                                        </div><!--end col-->
+                                        <div class="row g-3">
+                                            
+                                            <div class="col-md-6">
+                                                <div>
+                                                    <label for="lastName" class="form-label">Principal</label>
+                                                    <input type="number" class="form-control"name="principal" value="{{ $account->principal }}" id="lastName" placeholder="$0.00" required>
+                                                </div>
+                                            </div><!--end col-->
+                                            
+                                            <div class="col-md-3">
+                                                <label for="lastName" class="form-label">Billing Group</label>
+                                                <select name="billinggroup" class="form-control" id="">
+                                                    
+                                                    <option value="">{{ $account->billinggroup }}</option>
+                                                    
+                                                </select>
+                                            </div><!--end col-->
 
-                                                                         <div class="col-xxl-3">
-                                                                           <label for="lastName" class="form-label">Account Status</label>
-                                                                           <select name="status" class="form-control" id="">
-                                                                                
-                                                                                <option value="{{ $account->status }}">{{ $account->status }}</option>
-                                                                                <option value="Active">Active</option>
-                                                                                <option value="Pending">Pending</option>
-                                                                                <option value="Waiting">Waiting</option>
-                                                                                <option value="Suspended">Suspended</option>
-                                                                           </select>
-                                                                        </div><!--end col-->
-                                                                       
-                                                                        <div class="col-lg-12">
-                                                                            <div class="hstack gap-2 justify-content-end">
-                                                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                                                            </div>
-                                                                        </div><!--end col-->
-                                                                    </div><!--end row-->
+                                                <div class="col-md-3">
+                                                <label for="lastName" class="form-label">Account Status</label>
+                                                <select name="status" class="form-control" id="">
+                                                    
+                                                    <option value="{{ $account->status }}">{{ $account->status }}</option>
+                                                    <option value="Active">Active</option>
+                                                    <option value="Pending">Pending</option>
+                                                    <option value="Waiting">Waiting</option>
+                                                    <option value="Suspended">Suspended</option>
+                                                </select>
+                                            </div><!--end col-->
+                                            
+                                            <div class="col-lg-12">
+                                                <div class="hstack gap-2 justify-content-end">
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                </div>
+                                            </div><!--end col-->
+                                        </div><!--end row-->
                                     </div>
                                     
                                 </div>
@@ -86,4 +85,4 @@
         </div>
      </div>
 
-@endsection
+</x-dash>

@@ -1,5 +1,4 @@
-@extends('layouts.dash')
-@section('content')
+<x-dash>
             <!-- ============================================================== -->
             <!-- Start right Content here -->
             <!-- ============================================================== -->
@@ -172,8 +171,4 @@
 
         </div>
         <!-- END layout-wrapper -->
-
-        
-
-
-      @endsection
+</x-dash>
