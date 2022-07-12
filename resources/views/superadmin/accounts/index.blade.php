@@ -83,23 +83,19 @@
                                                         <td class="status">
                                                              @if ($account->status=='ACTIVE')
                                                                 <h2
-                                                                class="badge badge-soft-success text-uppercase">{{ $account->status }}</h2></td>
-                                                                @elseif ($account->status=='')
+                                                                class="btn btn-success px-5 text-uppercase">{{ $account->status }}</h2></td>
+                                                                @elseif ($account->status=='SUSPENDED')
                                                                 <h2
-                                                                class="badge badge-soft-info text-uppercase">{{ $account->status }}</h2></td>
-                                                                 @elseif ($account->status=='Waiting')
-                                                                <h2
-                                                                class="btn badge-soft-warning text-uppercase">{{ $account->status.' Period' }}</h2></td>
+                                                                class="btn btn-danger text-uppercase">{{ $account->status }}</h2></td>
+                                                              
                                                                  @elseif ($account->status=='WAITING')
                                                                 <h2
                                                                 class="btn btn-warning text-uppercase">{{ $account->status.' Period' }}</h2></td>
-                                                                 @elseif ($account->status=='Suspended')
-                                                                <h2
-                                                                class="badge badge-soft-danger text-uppercase">{{ $account->status }}</h2></td>
+                                                                
                                                             @endif 
                                                             <td class="avg_price">
-                                                                <a href="/payments/{{ $account->id }}/create"><i class="ri-cash-fill text-info"> Pay</i> </a><br>
-                                                                    <a href="/accounts/{{ $account->id }}/edit" class="mr-5"><i class="ri-edit-2-line  "></i> Edit</a><br>
+                                                                <a href="/payments/{{ $account->id }}/create"><i class="ri-cash-fill btn text-info"> Pay</i> </a><br>
+                                                                    <a href="/accounts/{{ $account->id }}/edit" class="mr-5 btn"><i class="ri-edit-2-line  "></i> Edit</a><br>
                                                          
                                                         </td>
                                                             

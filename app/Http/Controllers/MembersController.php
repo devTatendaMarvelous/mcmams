@@ -29,6 +29,7 @@ class MembersController extends Controller
     {
         $members= Member::all();
         $accounts=Account::all();
+        
         return view('superadmin.members.members')
         ->with('accounts',$accounts)
         ->with('members',$members);

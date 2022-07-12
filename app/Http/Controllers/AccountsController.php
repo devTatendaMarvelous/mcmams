@@ -55,9 +55,7 @@ class AccountsController extends Controller
      */
     public function store(Request $request, $id)
     {
-
-
-        
+  
         $account=Account::all()->where('member_id',$id);
         $allAccounts=Account::all();
 
@@ -69,54 +67,40 @@ class AccountsController extends Controller
         }else{
 
 
-
-             $memberAccount=$request->validate([
-                'product_id'=>'required',
-             ]);
-
-           
+            $member=Member::find($id);        
             $memberAccount['member_id']=$id;
-           
             $memberAccount['suffix']=1;
             $memberAccount['balance']= 0.00;
             $memberAccount['claimed']= 0.00;
             $memberAccount['status']='WAITING';
 
-            if($request->product_id==1){
+            if($member->product_id==1){
                 if(count($allAccounts)>0){
-                    $memberAccount['memberno']='BC-'.count($account);
+                    $memberAccount['memberno']='BC-'. 1 + count($allAccounts);
                 }else{
                     $memberAccount['memberno']='BC-0001';
                      
                 }
                 
-            }elseif($request->product_id==2){
+            }elseif($member->product_id==2){
                 if(count($allAccounts)>0){
-                    $memberAccount['memberno']='MC-'.count($account);
+                    $memberAccount['memberno']='MC-'. 1 + count($allAccounts);
                 }else{
                     $memberAccount['memberno']='MC-0001';
                 }
                 
-            }elseif($request->product_id==3){
+            }elseif($member->product_id==3){
                 if(count($allAccounts)>0){
-                    $memberAccount['memberno']='PT-'.count($account);
+                    $memberAccount['memberno']='PT-'. 1 + count($allAccounts);
                 }else{
                     $memberAccount['memberno']='PT-0001';
-                }
-                
+                }            
             }
-        
-            
            Account::create($memberAccount);
-
             echo "<script>alert('Account Created Successfully');</script>";
             return redirect('/accounts');
-            
-    
         }
-
-
-       
+   
     }
 
     /**
@@ -151,16 +135,8 @@ class AccountsController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-
         $memberAccount =  Account::find($id);
-
-        $contribution = $request->input('principal');
-      
-        $memberAccount->principal = $contribution;
-        $memberAccount->globallimit = $contribution * 48;
-        $memberAccount->suffix = 1;
-        $memberAccount->balance = 0.00;
+        
         $memberAccount->status =  $request->input('status');
         $memberAccount->save();
 

@@ -78,7 +78,7 @@
                                                             <td class="">{{ $member->email }}</td>
                                                             <td class="">{{ $member->phone }}</td>
                                                             <td class="">{{ $member->sex }}</td>
-                                                               <td class="lead_score">{{ $member->ailments  }}</td>
+                                                               <td class="">{{ $member->ailments  }}</td>
                                                                <td class="lead_score">{{ $member->address  }}</td>
                                                             <td>
                                                                 <ul class="list-inline hstack gap-2 mb-0">
@@ -89,23 +89,44 @@
                                                                                 <i class="ri-more-fill align-middle"></i>
                                                                             </button>
                                                                             <ul class="dropdown-menu dropdown-menu-end">
-                                                                                @forelse ($accounts as $account)
-                                                                                    @if ($account->memvber_id==$member->id<0))
+                                                                                @php
+                                                                                    $count=0;
+                                                                                @endphp
+                                                                              @foreach ($accounts as $account )
+                                                                                  
+                                                                          
+                                                                                    @if ($account->member_id==$member->id)
                                                                                     <li><a class="dropdown-item" href="/dependends/{{ $member->id }}/show"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View Dependends</a></li>
                                                                                     <li><a class="dropdown-item" href="/dependends/{{ $member->id }}/add"><i class="ri-add-fill align-bottom me-2 text-muted"></i>Add Depended</a></li>
                                                                               
+                                                                                    @php
+                                                                                         $count=1;
+                                                                                    @endphp
+                                                                                    @break
+                                                                                   
                                                                                 
-                                                                                @endif
-                                                                                @empty
-                                                                                     <li>
-                                                                                        <button type="button" class="btn btn-primary-outline" >
+                                                                                     @endif
+
+                                                                                @endforeach
+                                                                                @if ($count==0)
+                                                                                    
+                                                                                        <li>
+                                                                                            <form action="/accounts/{{ $member->id }}/store" method="POST">
+                                                                                                @csrf
+                                                                                             
+                                                                                                
+                                                                                                    <div class="col-lg-12">
+                                                                                                        <div class="hstack gap-2 justify-content-end">
+                                                                                                        
+                                                                                                            <button type="submit" class="btn btn-primary"><i class="ri-add-fill align-bottom me-2 text-muted"></i> Open Account</button>
+                                                                                                        </div>
+                                                                                                    </div><!--end col-->
+                                                                                                
+                                                                                            </form>
                                                                                            
-                                                                                        </button> 
-                                                                                        <a class="dropdown-item" href="/accounts/{{ $member->id }}/open">
-                                                                                         <i class="ri-add-fill align-bottom me-2 text-muted"></i> Open Account
-                                                                                        </a></li>
-                                                                               
-                                                                                @endforelse
+                                                                                            
+                                                                                            </li>
+                                                                                @endif
                                                                                 
                                                                                 <li><a class="dropdown-item edit-item-btn" href="/members/{{ $member->id }}/edit"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a></li>
                                                                                 <li> 
