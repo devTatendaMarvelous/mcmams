@@ -1,5 +1,4 @@
-@extends('layouts.dash')
-@section('content')
+<x-dash>
 <br><br><br><br>
 
      <div class="modal-dialog modal-dialog-centered">
@@ -70,5 +69,4 @@
           </div><!--end modal-content-->
      </div><!--end modal-dialog-->
                                   
-
-@endsection
+</x-dash>

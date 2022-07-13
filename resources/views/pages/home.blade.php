@@ -34,6 +34,11 @@
                   
 
                        @if (Auth::user()->role=='SuperAdmin')
+            {{ $products }}
+                        {{-- @if(count($products)<1) --}}
+                                  <div class="col-sm-auto"><div><a href="/products/create" class="btn btn-success add-btn"><i class="ri-add-line align-bottom me-1"></i> Add Contribution</a></div></div>
+                          @else
+        
                            <div class=" col-sm-10 col-12">
                            <div class="card">
                                <div class="card-body">
@@ -90,6 +95,7 @@
                            </div>
                        </div>
                        @endif
+                        {{-- @endif --}}
 
                    </div>
                @endif

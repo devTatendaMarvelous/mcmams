@@ -4,7 +4,7 @@
           <div class="card">
                <div class="card-body">
                       <div class=" p-3">
-                                                        <h5 class="modal-title" >Add Product</h5>
+                                                        <h5 class="modal-title" >Add Contribution</h5>
                                                         
                                                     </div>
                                                     <form action="/products/store" method="POST">

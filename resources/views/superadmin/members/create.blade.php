@@ -12,6 +12,16 @@
                                                         <div class="modal-body">
                                                            
                                                             <div class="row g-3">
+
+                                                                 <div class="col-md-2">
+                                                                    <div>
+                                                                        <label for="name-field" class="form-label">Employee Number</label>
+                                                                        <input type="text" id="customername-field" name="employeeNo" class="form-control" placeholder=" Employee Number "  />
+                                                                         @error('employeeNo')
+                                                                         <p><small class="text-danger"><em>{{ $message }}</em></small>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
                                                                 <div class="col-md-5">
                                                                     <div>
                                                                         <label for="name-field" class="form-label">Name</label>
@@ -21,15 +31,7 @@
                                                                         @enderror
                                                                     </div>
                                                                 </div>
-                                                                  <div class="col-md-2">
-                                                                    <div>
-                                                                        <label for="name-field" class="form-label">Initials</label>
-                                                                        <input type="text" id="customername-field" name="initials" class="form-control" placeholder="Enter initials"  />
-                                                                         @error('initials')
-                                                                         <p><small class="text-danger"><em>{{ $message }}</em></small>
-                                                                        @enderror
-                                                                    </div>
-                                                                </div>
+                                                                 
                                                                  <div class="col-md-5">
                                                                     <div>
                                                                         <label for="name-field" class="form-label">Surname</label>
@@ -62,9 +64,15 @@
                                                                    <div class="col-md-2">
                                                                     <div><label for="lead_score-field" class="form-label">Medical Aid Plan</label>
                                                                         <select name="product_id" id="" class="form-control" >
-                                                                            <option value="1">Basic Care</option>
-                                                                            <option value="2">Main Scheme</option>
-                                                                            <option value="3">Platnum</option>
+                                                                            @forelse ($products as $product )
+                                                                                <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                                                            @empty
+                                                                                
+                                                                            @endforelse
+
+                                                                            
+                                                                            {{-- <option value="2">Main Scheme</option>
+                                                                            <option value="3">Platnum</option> --}}
                                                                             
                                                                         </select>
                                                                          @error('product_id')

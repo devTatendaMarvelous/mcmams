@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('members', function (Blueprint $table) {
             $table->id();
              $table->foreignId('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->string('employeeNo');
             $table->string('name');
             $table->string('surname');
-            $table->string('initials')->nullable();
             $table->date('dob');
             $table->mediumText('ailments')->nullable();
             $table->string('phone');

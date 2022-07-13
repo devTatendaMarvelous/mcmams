@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Member;
+use App\Models\Product;
+use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,10 +26,13 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {   $members=Member::all();
+    {  
+        $products=Product::all();
+     
+        $members=Member::all();
         $members=count($members);
        $opened=2;
-        return view('pages.home')->with('opened',$opened)
-        ->with('members',$members);
+        return view('pages.home')
+        ->with([['members',$members],["products",$products]]);
     }
 }

@@ -22,6 +22,7 @@ class Member extends Model
             'address',
              'photo',
              'product_id',
+             'employeeNo',
 
     ];
 

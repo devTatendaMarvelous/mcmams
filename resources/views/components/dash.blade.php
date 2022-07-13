@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg">
+<html lang="en" data-layout="vertical" data-topbar="dark" data-sidebar="dark" data-sidebar-size="lg">
 
 <head>
 
@@ -197,15 +197,15 @@
                                
                            @endif href="#products" data-bs-toggle="collapse" role="button"
                                 aria-expanded="false" aria-controls="products">
-                                <i class=" ri-user-fill "></i> <span data-key="t-layouts">Products</span>
+                                <i class=" ri-user-fill "></i> <span data-key="t-layouts">Contributions</span>
                             </a>
                             <div class="collapse menu-dropdown" id="products">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="/products" class="nav-link"  data-key="t-horizontal">All Products</a>
+                                        <a href="/products" class="nav-link"  data-key="t-horizontal">All Contributions</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="/products/create" class="nav-link"  data-key="t-detached">Add Product</a>
+                                        <a href="/products/create" class="nav-link"  data-key="t-detached">Add Contribution</a>
                                     </li>
                                     
                                 </ul>

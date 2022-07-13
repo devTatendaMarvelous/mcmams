@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Account;
 use App\Models\Dependend;
 use App\Models\Member;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -43,7 +44,12 @@ class MembersController extends Controller
      */
     public function create()
     {
-        return view('superadmin.members.create');   
+        $products=Product::all();
+     
+
+        return view('superadmin.members.create')->with('products',
+               $products
+            );   
     }
 
     /**
@@ -66,6 +72,7 @@ class MembersController extends Controller
             'ailments'=>'nullable',
             'address'=>'required',
             'product_id'=>'required',
+             'employeeNo'=>'required',
         ]);
 
         $member['photo']='nomedia.png';

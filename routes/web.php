@@ -1,9 +1,10 @@
 <?php
+use Illuminate\Support\Facades\Route;
+
 
 use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\DependendsController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\userProfileController;
@@ -70,7 +71,9 @@ Route::get('/dependends/{id}/show',[DependendsController::class,'show']);
 Route::get('products', [ProductsController::class, 'index']);
 Route::get('products/create', [ProductsController::class, 'create']);
 Route::post('/products/store', [ProductsController::class, 'store']);
-Route::get('/products/{id}/show',[ProductsController::class,'show']);
+Route::get('/products/{id}/delete',[ProductsController::class,'destroy']);
+Route::get('/products/{id}/edit',[ProductsController::class,'edit']);
+Route::post('/products/{id}/update',[ProductsController::class,'update']);
 // ==============================================================================================================
 
 Auth::routes();

@@ -67,7 +67,8 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product=Product::find($id);
+        return view('superadmin.products.edit')->with('product', $product);
     }
 
     /**
@@ -79,7 +80,16 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $storedProduct=Product::find($id);
+          $product=$request->validate([
+            'name'=>'required',
+            'contribution'=>'required',
+        ]);
+        $limit=$product['contribution'] * 36;
+        $product['limit']=$limit;
+        
+        $storedProduct->update($product);
+        return redirect('/products');
     }
 
     /**
@@ -90,6 +100,8 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
+       Product::destroy($id);
+       return back();
         //
     }
 }

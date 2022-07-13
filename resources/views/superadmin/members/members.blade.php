@@ -43,8 +43,9 @@
                                                 <table class="table align-middle table-nowrap" id="customerTable">
                                                   <thead class="table-light">
                                                         <tr>
+                                                            <th class="sort" data-sort="name" scope="col">Employee Number</th>
                                                             <th class="sort" data-sort="name" scope="col">Name</th>
-                                                            <th class="sort" data-sort="name" scope="col">initials</th>
+                                                            
                                                             <th class="sort" data-sort="surname" scope="col">Surname</th>
                                                             <th class="sort" data-sort="name" scope="col">DOB</th>
                                                             <th class="sort" data-sort="name" scope="col">National ID</th>
@@ -69,8 +70,9 @@
                                                         <tr >
                                                            
                                                             <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ001</a></td>
+                                                              <td class="company_name px-5">{{ $member->employeeNo }} </td>
                                                             <td class="name">{{ $member->name }} </td>
-                                                            <td class="company_name">{{ $member->initials }} </td>
+                                                          
                                                             <td class="name">{{ $member->surname }} </td>
                                                             <td class="email_id">{{ $member->dob }}</td>
                                                             <td class="phone">{{ $member->natId }}</td>

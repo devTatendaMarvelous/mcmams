@@ -18,7 +18,7 @@
                             <div class="col-lg-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h4 class="card-title mb-0">AVAILABLE PRODUCTS</h4>
+                                        <h4 class="card-title mb-0">AVAILABLE CONTRIBUTIONS</h4>
                                     </div><!-- end card header -->
 
                                     <div class="card-body">
@@ -71,11 +71,10 @@
                                                             <td>
                                                                 <div class="d-flex gap-2">
                                                                     <div class="edit">
-                                                                        <button class="btn btn-sm btn-success edit-item-btn"
-                                                                        data-bs-toggle="modal" data-bs-target="#showModal">Edit</button>
+                                                                        <a href="/products/{{ $product->id }}/edit" class="btn btn-sm btn-success edit-item-btn">Edit</a>
                                                                     </div>
                                                                     <div class="remove">
-                                                                        <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Remove</button>
+                                                                        <a href="/products/{{ $product->id }}/delete" class="btn btn-sm btn-danger remove-item-btn" >Remove</a>
                                                                     </div>
                                                                 </div>
                                                             </td>
