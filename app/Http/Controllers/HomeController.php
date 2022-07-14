@@ -32,7 +32,7 @@ class HomeController extends Controller
         $members=Member::all();
         $members=count($members);
        $opened=2;
-        return view('pages.home')
-        ->with([['members',$members],["products",$products]]);
+         return view('pages.home');
+        // ->with([['members'=>$members,"products"=>$products]]);
     }
 }
