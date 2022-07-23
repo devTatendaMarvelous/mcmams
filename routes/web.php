@@ -69,6 +69,7 @@ Route::post('/payments/{id}/store', [PaymentsController::class, 'store']);
 
 
 // ============================CLAIMS=================================================================================
+Route::get('claims/', [ClaimsController::class, 'index']);
 Route::get('claims/{id}/create/{claimed}', [ClaimsController::class, 'create']);
 Route::post('claims/{id}/store', [ClaimsController::class, 'store']);
 // ==============================================================================================================

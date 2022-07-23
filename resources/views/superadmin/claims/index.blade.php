@@ -11,11 +11,11 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                    <h4 class="mb-sm-0">Payments</h4>
+                                    <h4 class="mb-sm-0">claims</h4>
 
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Payments</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">claims</a></li>
                                             <li class="breadcrumb-item active">All</li>
                                         </ol>
                                     </div>
@@ -33,7 +33,7 @@
                                             <div class="col-md-4">
                                                 <div class="search-box">
                                                     <input type="text" class="form-control search"
-                                                        placeholder="Search for Payment">
+                                                        placeholder="Search for claim">
                                                     <i class="ri-search-line search-icon"></i>
                                                 </div>
                                             </div>
@@ -68,7 +68,7 @@
                                                     </thead>
                                                     
                                                     <tbody class="list form-check-all">
-                                                    @forelse ($payments as $payment )
+                                                    @forelse ($claims as $claim )
                                                         
                                                         <tr >
                                                             <th scope="row">
@@ -77,13 +77,13 @@
                                                                 </div>
                                                             </th>
                                                             <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ001</a></td>
-                                                            <td class="name">{{ $payment->memberno }} </td>
-                                                            <td class="name">{{ $payment->name }} </td>
-                                                            <td class="name">{{ $payment->surname }} </td>
-                                                            <td class="email_id">{{ $payment->amount }}</td>
-                                                            <td class="phone">{{ $payment->referrence }}</td>
-                                                            <td class="lead_score">{{ $payment->purpose  }}</td>
-                                                            <td class="lead_score">{{ $payment->created_at  }}</td>
+                                                            <td class="name">{{ $claim->memberno }} </td>
+                                                            <td class="name">{{ $claim->name }} </td>
+                                                            <td class="name">{{ $claim->surname }} </td>
+                                                            <td class="email_id">{{ $claim->amount }}</td>
+                                                            <td class="phone">{{ $claim->referrence }}</td>
+                                                            <td class="lead_score">{{ $claim->purpose  }}</td>
+                                                            <td class="lead_score">{{ $claim->created_at  }}</td>
                                                             <td>
                                                                 <ul class="list-inline hstack gap-2 mb-0">
                                                                     
@@ -112,8 +112,8 @@
                                                             
                                                                 <div class="text-center">
                                                                     
-                                                                    <h5 class="mt-2"> No Payments Made So Far</h5>
-                                                                    <p class="text-muted mb-0">Please Go To Members And Make A Payment.</p>
+                                                                    <h5 class="mt-2"> No claims Made So Far</h5>
+                                                                    <p class="text-muted mb-0">Please Go To Members And Make A claim.</p>
                                                                 </div>
                                                            
                                                         @endforelse
@@ -123,7 +123,7 @@
                                                                     colors="primary:#121331,secondary:#08a88a" style="width:75px;height:75px">
                                                                 </lord-icon>
                                                                 <h5 class="mt-2">Sorry! No Result Found</h5>
-                                                                <p class="text-muted mb-0">We've searched more than {{ count($payments) }}+ payments We did not find any
+                                                                <p class="text-muted mb-0">We've searched more than + claims We did not find any
                                                                    members for you search.</p>
                                                             </div>
                                                         </div>

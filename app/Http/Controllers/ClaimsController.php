@@ -17,7 +17,10 @@ class ClaimsController extends Controller
      */
     public function index()
     {
-        //
+        // $claims=Claim::join('accounts','accounts.member_id','=','members.id')
+        // ->join('claims','claims.account_id','=','accounts.id');
+        $claims=Claim::all();
+        return view('superadmin.claims.index')->with('claims',$claims);
     }
 
     /**
@@ -53,7 +56,7 @@ class ClaimsController extends Controller
             [
                 'provider'=>'required',
                 'amount'=>'required',
-                'referrence'=>'required',
+                'referrence'=>['required','unique:claims'],
                 'description'=>'required',
             ]
            
