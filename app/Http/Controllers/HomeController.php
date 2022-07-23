@@ -28,11 +28,11 @@ class HomeController extends Controller
     public function index()
     {  
         $products=Product::all();
-     
+     $products=count($products);
         $members=Member::all();
         $members=count($members);
        $opened=2;
-         return view('pages.home');
-        // ->with([['members'=>$members,"products"=>$products]]);
+         return view('pages.home')
+        ->with(['members'=>$members,"products"=>$products]);
     }
 }

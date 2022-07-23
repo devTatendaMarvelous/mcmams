@@ -10,11 +10,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\userProfileController;
 use App\Http\Controllers\MembersController;
 use App\Http\Controllers\PaymentsController;
-
-
-Route::get('/', function () {
-    return view('pages.home');
-})->middleware('auth');
+use App\Http\Controllers\DependendsAccountsController;
+Route::get('/',[HomeController::class,'index'])->middleware('auth');
 //===========USER PROFILES=====
 
 route::get('/profile/{id}', [UserProfileController::class, 'index']);
@@ -50,6 +47,15 @@ Route::post('/accounts/{id}/update', [AccountsController::class, 'update']);
 
 //==================================================================================================================
 
+//==================DEPENDENDSACCOUNTS=====================================================================================
+Route::post('/dependendsAccounts/{id}/{member_id}/store', [DependendsAccountsController::class,'store']);
+Route::get('/accounts', [AccountsController::class,'index']);
+Route::get('/accounts/{id}/edit', [AccountsController::class,'edit']);
+Route::post('/accounts/{id}/update', [AccountsController::class, 'update']);
+
+
+//==================================================================================================================
+
 //==================PAYMENTS=====================================================================================
 Route::get('/payments', [PaymentsController::class, 'index']);
 Route::get('/payments/{id}/create', [PaymentsController::class, 'create']);
@@ -60,7 +66,7 @@ Route::post('/payments/{id}/store', [PaymentsController::class, 'store']);
 
 
 // ==========   DEPENDENDS=================================================================================
-Route::get('dependends/{id}/add', [DependendsController::class, 'index']);
+Route::get('dependends/{id}/add', [DependendsController::class, 'create']);
 Route::post('/dependends/{id}/store', [DependendsController::class, 'store']);
 Route::get('/dependends/{id}/show',[DependendsController::class,'show']);
 // ==============================================================================================================

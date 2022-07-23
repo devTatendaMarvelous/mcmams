@@ -16,18 +16,17 @@ return new class extends Migration
         Schema::create('dependends', function (Blueprint $table) {
             $table->id();
             
-            $table->foreignId('member_id')->references('id')->on('members')->onDelete('cascade');
-            $table->string('memberno');
+            $table->foreignId('member_id')->references('id')->on('members')->onDelete('cascade');  
             $table->string('name');
             $table->string('surname');
-            $table->string('initials')->nullable();
             $table->date('dob');
-            $table->string('company');
+            $table->mediumText('ailments')->nullable();
             $table->string('phone');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('natId');
-            $table->mediumText('address');
             $table->char('sex');
+            $table->string('photo');
+            $table->mediumText('address');
             $table->timestamps();
            
         });

@@ -6,6 +6,7 @@ use App\Models\Account;
 use Illuminate\Http\Request;
 use App\Models\Member;
 use App\Models\Dependend;
+use App\Models\DependendAccount;
 
 class DependendsController extends Controller
 {
@@ -23,9 +24,9 @@ class DependendsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        return view('superadmin.dependends.dependends')->with('id',$id);
+       
     }
 
     /**
@@ -33,9 +34,9 @@ class DependendsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id  )
     {
-        //
+         return view('superadmin.dependends.create')->with('id',$id);
     }
 
     /**
@@ -50,22 +51,27 @@ class DependendsController extends Controller
         $member=Member::find($id);
         $memberno=json_decode($memberno,true);
 
-        $memberno=$memberno[0]['memberno'];
-        $dependend = new Dependend();
-        $dependend->memberno =$memberno;
-        $dependend->name = $request->input('name');
-        $dependend->surname = $request->input('surname');
-        $dependend->initials = $request->input('initials');
-        $dependend->dob = $request->input('dob');
-        $dependend->natId = $request->input('natId');
-        $dependend->company = $member->company;
-        $dependend->email = $request->input('email');
-        $dependend->phone = $request->input('phone');
-        $dependend->sex = $request->input('sex');
-        $dependend->address = $request->input('address');
-        $dependend->member_id=$id;
-        $dependend->save();
-        return redirect('/members');
+        $dependend=$request->validate([
+            'name'=>'required',
+            'surname'=>'required',
+            'initials'=>'nullable',
+            'dob'=>'required',
+            'natId'=>['required','unique:dependends'],
+            'email'=> ['required', 'string', 'email', 'max:255', 'unique:dependends'],
+            'phone'=>['required', 'min:10', 'max:10'],
+            'sex'=>'required',
+            'ailments'=>'nullable',
+            'address'=>'required',
+    
+            
+        ]);
+
+        $dependend['photo']='nomedia.png';
+        $dependend['member_id']=$id;
+
+        Dependend::create($dependend);
+
+        return redirect("/dependends/".$id."/show");
     }
 
     /**
@@ -78,10 +84,12 @@ class DependendsController extends Controller
     {
         $dependends=Dependend::all()->where('member_id',$id);
         $member=Member::findorfail($id);
-        
-       return view('superadmin.dependends.view')
+        $accounts=DependendAccount::all();
+       
+       return view('superadmin.dependends.index')
             ->with('member',$member)
-            ->with('dependends', $dependends);
+            ->with('dependends', $dependends)
+            ->with('accounts',$accounts);
     }
 
     /**

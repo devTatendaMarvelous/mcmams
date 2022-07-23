@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Member;
+use App\Models\dependend;
 use App\Models\Account;
+use App\Models\DependendAccount;
 use App\Models\Product;
+use App\Models\Member;
 
-class AccountsController extends Controller
+class DependendsAccountsController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -26,8 +28,8 @@ class AccountsController extends Controller
     public function index()
     {
         
-     $accounts=Product::join('members','members.product_id','=','products.id')
-                    ->join('accounts','accounts.member_id','=','members.id')->get();
+     $accounts=Product::join('dependends','dependends.product_id','=','products.id')
+                    ->join('accounts','accounts.dependend_id','=','dependends.id')->get();
   
      return view('superadmin.accounts.index')
      ->with('accounts',$accounts);
@@ -41,9 +43,9 @@ class AccountsController extends Controller
     public function open($id)
 
     {
-        $member=Member::findorfail($id);
+        $dependend=dependend::findorfail($id);
         return view('superadmin.accounts.create')
-        ->with('member',$member)->with('id',$id);
+        ->with('dependend',$dependend)->with('id',$id);
         
     }
 
@@ -53,52 +55,34 @@ class AccountsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request, $id, $member_id)
     {
   
-        $account=Account::all()->where('member_id',$id);
-        $allAccounts=Account::all();
+        $account=DependendAccount::all()->where('dependend_id',$id);
+    
 
         if(count($account)>0){
 
           
-            return back()->with('alert','The member already has an account!! ');
+            return back()->with('alert','The dependend already has an account!! ');
 
         }else{
 
 
-            $member=Member::find($id);        
-            $memberAccount['member_id']=$id;
-            $memberAccount['suffix']=1;
-            $memberAccount['balance']= 0.00;
-            $memberAccount['claimed']= 0.00;
-            $memberAccount['status']='WAITING';
-
-            if($member->product_id==1){
-                if(count($allAccounts)>0){
-                    $memberAccount['memberno']='BC-'. 1 + count($allAccounts);
-                }else{
-                    $memberAccount['memberno']='BC-0001';
-                     
-                }
+            $memberAccount=Account::all()->where('member_id', $member_id);
+          
+            $accounts=DependendAccount::all()->where('memberno',$memberAccount[0]['memberno']);
                 
-            }elseif($member->product_id==2){
-                if(count($allAccounts)>0){
-                    $memberAccount['memberno']='MC-'. 1 + count($allAccounts);
-                }else{
-                    $memberAccount['memberno']='MC-0001';
-                }
-                
-            }elseif($member->product_id==3){
-                if(count($allAccounts)>0){
-                    $memberAccount['memberno']='PT-'. 1 + count($allAccounts);
-                }else{
-                    $memberAccount['memberno']='PT-0001';
-                }            
-            }
-           Account::create($memberAccount);
+            $dependendAccount['dependend_id']=$id;
+            $dependendAccount['suffix']=count($accounts)+2;
+            $dependendAccount['balance']= 0.00;
+            $dependendAccount['claimed']= 0.00;
+            $dependendAccount['status']='WAITING';
+            $dependendAccount['memberno']=$memberAccount[0]['memberno'];
+           
+           DependendAccount::create($dependendAccount);
             echo "<script>alert('Account Created Successfully');</script>";
-            return redirect('/accounts');
+            return redirect('/dependends/'.$member_id.'/show')->with('alert','Account opened successfuly ');
         }
    
     }
@@ -135,13 +119,13 @@ class AccountsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $memberAccount =  Account::find($id);
+        $dependendAccount =  Account::find($id);
         
-        $memberAccount->status =  $request->input('status');
-        $memberAccount->save();
+        $dependendAccount->status =  $request->input('status');
+        $dependendAccount->save();
 
         echo "<script>alert('Account Updated Successfully');</script>";
-        return redirect('/accounts');
+        return redirect('/accounts/p');
     }
 
     /**

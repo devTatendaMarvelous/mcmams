@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('accounts', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('member_id')->references('id')->on('members')->onDelete('cascade');
+        Schema::create('dependend_accounts', function (Blueprint $table) {
+             $table->id();
+            $table->foreignId('dependend_id')->references('id')->on('dependends')->onDelete('cascade');
             
             $table->string('memberno');
             $table->integer('suffix');
@@ -34,7 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('accounts');
+        Schema::dropIfExists('dependend_accounts');
     }
-
 };

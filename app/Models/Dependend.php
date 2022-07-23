@@ -13,4 +13,27 @@ class Dependend extends Model
         return $this->belongsTo(Member::class);
         
     }
+      public function account()
+    {
+        return $this->hasOne(Account::class);
+     
+    }
+
+        protected $fillable=[
+        'name',
+            'surname',
+            'initials',
+            'dob',
+            'natId',
+            'email',
+            'phone',
+            'sex',
+            'ailments',
+            'address',
+             'photo',
+             'member_id',
+            
+
+    ];
+
 }
