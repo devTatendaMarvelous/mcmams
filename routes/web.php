@@ -11,6 +11,8 @@ use App\Http\Controllers\userProfileController;
 use App\Http\Controllers\MembersController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\DependendsAccountsController;
+use App\Http\Controllers\ClaimsController;
+
 Route::get('/',[HomeController::class,'index'])->middleware('auth');
 //===========USER PROFILES=====
 
@@ -63,6 +65,14 @@ Route::post('/payments/{id}/store', [PaymentsController::class, 'store']);
 
 
 //==================================================================================================================
+
+
+
+// ============================CLAIMS=================================================================================
+Route::get('claims/{id}/create/{claimed}', [ClaimsController::class, 'create']);
+Route::post('claims/{id}/store', [ClaimsController::class, 'store']);
+// ==============================================================================================================
+
 
 
 // ==========   DEPENDENDS=================================================================================

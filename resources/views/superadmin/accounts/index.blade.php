@@ -94,6 +94,7 @@
                                                                 
                                                             @endif 
                                                             <td class="avg_price">
+                                                                <a class="ri-cash-fill btn text-info" href="/claims/{{$account->id}}/create/{{ $account->limit }}"> Claim </a><br>
                                                                 <a href="/payments/{{ $account->id }}/create"><i class="ri-cash-fill btn text-info"> Pay</i> </a><br>
                                                                     <a href="/accounts/{{ $account->id }}/edit" class="mr-5 btn"><i class="ri-edit-2-line  "></i> Edit</a><br>
                                                          
