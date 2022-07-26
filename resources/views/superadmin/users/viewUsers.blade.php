@@ -76,7 +76,7 @@
                                                         <div class="col-lg-4 col">
                                                             <div class="team-profile-img">
                                                                 <div class="avatar-lg img-thumbnail rounded-circle shadow flex-shrink-0">
-                                                                    <img src="{{ asset('/storage/profilePhotos/'.$user->photo) }}" alt="" class="img-fluid d-block rounded-circle" />
+                                                                    <img src="{{ asset('temp.jpg')}}" alt="" class="img-fluid d-block rounded-circle" />
                                                                 </div>
                                                                 <div class="team-content">
                                                                     <a data-bs-toggle="offcanvas" href="#offcanvasExample" aria-controls="offcanvasExample"><h5 class="fs-16 mb-1">{{ $user->name }}</h5></a>

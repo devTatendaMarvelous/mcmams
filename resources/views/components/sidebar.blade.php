@@ -5,23 +5,23 @@
                 <!-- Dark Logo-->
                 <a href="/home" class="logo logo-dark">
                     <span class="logo-sm">
-                         <h1>{{ config('app.name') }}</h1>
+                         <img src="{{ asset('logo.png')}}" alt="" height="150">
                         {{-- <img src="{{ asset('assets/images//logo-sm.png')}}" alt="{{ config('app.name') }}" height="22"> --}}
                     </span>
                     <span class="logo-lg">
-                        <h1>{{ config('app.name') }}</h1>
-                        {{-- <img src="{{ asset('assets/images//logo-dark.png')}}" alt="{{ config('app.name') }}" height="17"> --}}
+                        <img src="{{ asset('logo.png')}}" alt="" height="150">
+                        {{-- <img src="{{ asset('assets/images//logo-dark.png')}}" alt="{{ config('app.name') }}" height="150"> --}}
                     </span>
                 </a>
                 <!-- Light Logo-->
                 <a href="/home" class="logo logo-light">
                     <span class="logo-sm">
-                        <h1>{{ config('app.name') }}</h1>
+                        <img src="{{ asset('logo.png')}}" alt="" height="150">
                         {{-- <img src="{{ asset('assets/images//logo-sm.png')}}" alt="{{ config('app.name') }}" height="22"> --}}
                     </span>
                     <span class="logo-lg">
-                        <h1>{{ config('app.name') }}</h1>
-                        {{-- <img src="{{ asset('assets/images//logo-light.png')}}" alt="{{ config('app.name') }}" height="17"> --}}
+                        <img src="{{ asset('logo.png')}}" alt="" height="150">
+                        {{-- <img src="{{ asset('assets/images//logo-light.png')}}" alt="{{ config('app.name') }}" height="150"> --}}
                     </span>
                 </a>
                 <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
