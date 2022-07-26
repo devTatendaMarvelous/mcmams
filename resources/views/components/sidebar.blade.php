@@ -48,7 +48,7 @@
                             style="display:none;"
                                
                            @endif href="/users" >
-                                <i class=" ri-user-fill "></i> <span data-key="t-layouts">Users</span>
+                                <i class="  ri-group-fill "></i> <span data-key="t-layouts">Users</span>
                             </a>
                             
                         </li>
@@ -59,7 +59,7 @@
                                
                            @endif href="#products" data-bs-toggle="collapse" role="button"
                                 aria-expanded="false" aria-controls="products">
-                                <i class=" ri-user-fill "></i> <span data-key="t-layouts">Contributions</span>
+                                <i class=" mdi mdi-sticker-text-outline "></i> <span data-key="t-layouts">Contributions</span>
                             </a>
                             <div class="collapse menu-dropdown" id="products">
                                 <ul class="nav nav-sm flex-column">
@@ -80,7 +80,7 @@
                                
                            @endif href="#members" data-bs-toggle="collapse" role="button"
                                 aria-expanded="false" aria-controls="members">
-                                <i class=" ri-user-fill "></i> <span data-key="t-layouts">Members</span>
+                                <i class=" ri-contacts-fill "></i> <span data-key="t-layouts">Members</span>
                             </a>
                             <div class="collapse menu-dropdown" id="members">
                                 <ul class="nav nav-sm flex-column">
@@ -101,7 +101,7 @@
                                
                            @endif href="#sidebarLayouts" data-bs-toggle="collapse" role="button"
                                 aria-expanded="false" aria-controls="sidebarLayouts">
-                                <i class=" ri-user-fill "></i> <span data-key="t-layouts">Accounts</span>
+                                <i class="  ri-account-pin-circle-line "></i> <span data-key="t-layouts">Accounts</span>
                             </a>
                             <div class="collapse menu-dropdown" id="sidebarLayouts">
                                 <ul class="nav nav-sm flex-column">
@@ -136,6 +136,10 @@
                                 </ul>
                             </div>
                         </li> <!-- end Dashboard Menu -->
+
+
+<!-- 
+
                         <li class="nav-item">
                             <a class="nav-link menu-link"
                             @if (auth::user()->role=='Member')
@@ -156,40 +160,12 @@
                                     
                                 </ul>
                             </div>
-                        </li> <!-- end Dashboard Menu -->
-                        <li class="nav-item">
-                            <a class="nav-link menu-link"
-                            @if (auth::user()->role=='Member')
-                            style="display:none;"
-                               
-                           @endif
-                            href="#sidebarLayouts" data-bs-toggle="collapse" role="button"
-                                aria-expanded="false" aria-controls="sidebarLayouts">
-                                <i class=" ri-user-fill "></i> <span data-key="t-layouts">Clients</span>
-                            </a>
-                            <div class="collapse menu-dropdown" id="sidebarLayouts">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a href="layouts-horizontal.html" class="nav-link" target="_blank" data-key="t-horizontal">Super Admins</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="layouts-detached.html" class="nav-link" target="_blank" data-key="t-detached">Authoriser</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="layouts-two-column.html" class="nav-link" target="_blank" data-key="t-two-column">Disburser</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="layouts-vertical-hovered.html" class="nav-link" target="_blank" data-key="t-hovered">Hovered</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li> <!-- end Dashboard Menu -->
-
-                      
+                        </li> 
+                                           
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="#" data-bs-toggle="collapse" role="button"
                                 aria-expanded="false" aria-controls="sidebarPages">
-                                <i class="mdi mdi-sticker-text-outline"></i> <span data-key="t-pages">Users</span>
+                                <i class=""></i> <span data-key="t-pag es">Users</span>
                             </a>
                             <div class="collapse menu-dropdown" id="sidebarPages">
                                 <ul class="nav nav-sm flex-column">
@@ -240,7 +216,7 @@
                                     </li>
                                 </ul>
                             </div>
-                        </li>
+                        </li> -->
 
                       
 
