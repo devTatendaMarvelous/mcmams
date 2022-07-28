@@ -5,22 +5,22 @@
                 <!-- Dark Logo-->
                 <a href="/home" class="logo logo-dark">
                     <span class="logo-sm">
-                         <img src="{{ asset('logo.png')}}" alt="" height="150">
+                         <img src="{{ asset('logo.png')}}" alt="" height="100">
                         {{-- <img src="{{ asset('assets/images//logo-sm.png')}}" alt="{{ config('app.name') }}" height="22"> --}}
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ asset('logo.png')}}" alt="" height="150">
-                        {{-- <img src="{{ asset('assets/images//logo-dark.png')}}" alt="{{ config('app.name') }}" height="150"> --}}
+                        <img src="{{ asset('logo.png')}}" alt="" height="100">
+                        {{-- <img src="{{ asset('assets/images//logo-dark.png')}}" alt="{{ config('app.name') }}" height="100"> --}}
                     </span>
                 </a>
                 <!-- Light Logo-->
                 <a href="/home" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="{{ asset('logo.png')}}" alt="" height="150">
+                        <img src="{{ asset('logo.png')}}" alt="" height="100">
                         {{-- <img src="{{ asset('assets/images//logo-sm.png')}}" alt="{{ config('app.name') }}" height="22"> --}}
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ asset('logo.png')}}" alt="" height="150">
+                        <img src="{{ asset('logo.png')}}" alt="" height="100">
                         {{-- <img src="{{ asset('assets/images//logo-light.png')}}" alt="{{ config('app.name') }}" height="150"> --}}
                     </span>
                 </a>
@@ -120,34 +120,9 @@
                             @if (auth::user()->role=='Member')
                             style="display:none;"
                                
-                           @endif href="#payments" data-bs-toggle="collapse" role="button"
-                                aria-expanded="false" aria-controls="payments">
-                                <i class=" ri-user-fill "></i> <span data-key="t-layouts">Payments</span>
-                            </a>
-                            <div class="collapse menu-dropdown" id="payments">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a href="/payments" class="nav-link"  data-key="t-horizontal">Clients</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="/" class="nav-link"  data-key="t-detached">Other</a>
-                                    </li>
-                                    
-                                </ul>
-                            </div>
-                        </li> <!-- end Dashboard Menu -->
-
-
-<!-- 
-
-                        <li class="nav-item">
-                            <a class="nav-link menu-link"
-                            @if (auth::user()->role=='Member')
-                            style="display:none;"
-                               
                            @endif href="#claims" data-bs-toggle="collapse" role="button"
                                 aria-expanded="false" aria-controls="claims">
-                                <i class=" ri-user-fill "></i> <span data-key="t-layouts">Claims</span>
+                                <i class=" bx bx-money-withdraw  "></i> <span data-key="t-layouts">Claims</span>
                             </a>
                             <div class="collapse menu-dropdown" id="claims">
                                 <ul class="nav nav-sm flex-column">
@@ -155,68 +130,57 @@
                                         <a href="/claims" class="nav-link"  data-key="t-horizontal">All Claims</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="/" class="nav-link"  data-key="t-detached">Other</a>
+                                        <a href="/" class="nav-link"  data-key="t-detached">Add Claims</a>
                                     </li>
                                     
                                 </ul>
                             </div>
-                        </li> 
-                                           
+                        </li> <!-- end Dashboard Menu -->
+
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="#" data-bs-toggle="collapse" role="button"
-                                aria-expanded="false" aria-controls="sidebarPages">
-                                <i class=""></i> <span data-key="t-pag es">Users</span>
+                            <a class="nav-link menu-link"
+                            @if (auth::user()->role=='Member')
+                            style="display:none;"
+                               
+                           @endif href="#tarrifs" data-bs-toggle="collapse" role="button"
+                                aria-expanded="false" aria-controls="tarrifs">
+                                <i class="  bx bx-food-menu  "></i> <span data-key="t-layouts">Tarrifs & Configurations</span>
                             </a>
-                            <div class="collapse menu-dropdown" id="sidebarPages">
+                            <div class="collapse menu-dropdown" id="tarrifs">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="pages-starter.html" class="nav-link" data-key="t-starter"> Starter </a>
+                                        <a href="javascript:void(0)" class="nav-link"  data-key="t-horizontal">All tarrifs</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#sidebarProfile" class="nav-link" data-bs-toggle="collapse" role="button"
-                                            aria-expanded="false" aria-controls="sidebarProfile" data-key="t-profile"> Profile
-                                        </a>
-                                        <div class="collapse menu-dropdown" id="sidebarProfile">
-                                            <ul class="nav nav-sm flex-column">
-                                                <li class="nav-item">
-                                                    <a href="pages-profile.html" class="nav-link" data-key="t-simple-page"> Simple Page </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="pages-profile-settings.html" class="nav-link" data-key="t-settings"> Settings </a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                        <a href="javascript:void(0)" class="nav-link"  data-key="t-detached">Add tarrifs</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a href="pages-team.html" class="nav-link" data-key="t-team"> Team </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="pages-timeline.html" class="nav-link" data-key="t-timeline"> Timeline </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="pages-faqs.html" class="nav-link" data-key="t-faqs"> FAQs </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="pages-pricing.html" class="nav-link" data-key="t-pricing"> Pricing </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="pages-gallery.html" class="nav-link" data-key="t-gallery"> Gallery </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="pages-maintenance.html" class="nav-link" data-key="t-maintenance"> Maintenance </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="pages-coming-soon.html" class="nav-link" data-key="t-coming-soon"> Coming Soon </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="pages-sitemap.html" class="nav-link" data-key="t-sitemap"> Sitemap </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="pages-search-results.html" class="nav-link" data-key="t-search-results"> Search Results </a>
-                                    </li>
+                                    
                                 </ul>
                             </div>
-                        </li> -->
+                        </li> <!-- end Dashboard Menu -->
+                        <li class="nav-item">
+                            <a class="nav-link menu-link"
+                            @if (auth::user()->role=='Member')
+                            style="display:none;"
+                               
+                           @endif href="#wellness" data-bs-toggle="collapse" role="button"
+                                aria-expanded="false" aria-controls="wellness">
+                                <i class="  bx bx-book-heart  "></i> <span data-key="t-layouts">Employee Wellness</span>
+                            </a>
+                            <div class="collapse menu-dropdown" id="wellness">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="javascript:void(0)" class="nav-link"  data-key="t-horizontal">All Claims</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/" class="nav-link"  data-key="t-detached">Add Claims</a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </li> <!-- end Dashboard Menu -->
+
+
 
                       
 

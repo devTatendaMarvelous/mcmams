@@ -128,6 +128,9 @@
                     <button type="button"
                         class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle light-dark-mode shadow-none">
                         <i class='bx bxl-whatsapp  fs-22'></i>
+                        <span
+                            class="position-absolute topbar-badge fs-10 translate-middle badge rounded-pill bg-danger">99+<span
+                                class="visually-hidden">unread messages</span></span>
                     </button>
                 </div>
 
