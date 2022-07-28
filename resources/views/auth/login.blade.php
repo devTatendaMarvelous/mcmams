@@ -7,11 +7,10 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="text-center mt-sm-5 mb-4 text-white-50">
+                            <div class="text-center  mb-4 text-white-50">
                                 <div>
                                     <a href="/home" class="d-inline-block auth-logo">
-                                        <h1>{{ config('app.name') }}</h1>
-                                        {{-- <img src="assets/images/logo-light.png" alt="" height="20"> --}}
+                                        <img src="{{ asset('logo.png')}}" alt="" height="200">
                                     </a>
                                 </div>
                               
