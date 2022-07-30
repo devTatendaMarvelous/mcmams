@@ -59,7 +59,7 @@
                                
                            @endif href="#products" data-bs-toggle="collapse" role="button"
                                 aria-expanded="false" aria-controls="products">
-                                <i class=" mdi mdi-sticker-text-outline "></i> <span data-key="t-layouts">Contributions</span>
+                                <i class=" mdi mdi-sticker-text-outline "></i> <span data-key="t-layouts">Financials Management</span>
                             </a>
                             <div class="collapse menu-dropdown" id="products">
                                 <ul class="nav nav-sm flex-column">
@@ -69,7 +69,24 @@
                                     <li class="nav-item">
                                         <a href="/products/create" class="nav-link"  data-key="t-detached">Add Contribution</a>
                                     </li>
-                                    
+                                    <li class="nav-item">
+                                        <a href="javascript:void(0)" class="nav-link"  data-key="t-detached">Update Contribution</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="javascript:void(0)" class="nav-link"  data-key="t-detached">Refunds</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="javascript:void(0)" class="nav-link"  data-key="t-detached">Add Refund</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="javascript:void(0)" class="nav-link"  data-key="t-detached">Manage Payments</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="javascript:void(0)" class="nav-link"  data-key="t-detached">Add Payment</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="javascript:void(0)" class="nav-link"  data-key="t-detached">Report</a>
+                                    </li>
                                 </ul>
                             </div>
                         </li> <!-- end Dashboard Menu -->
@@ -85,11 +102,24 @@
                             <div class="collapse menu-dropdown" id="members">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="/members" class="nav-link"  data-key="t-horizontal">All Members</a>
+                                        <a href="/members" class="nav-link"  data-key="t-horizontal">Manage Members</a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="/members/create" class="nav-link"  data-key="t-detached">Add Member</a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a href="javascript:void(0)" class="nav-link"  data-key="t-detached">Medical History Enquiry</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="javascript:void(0)" class="nav-link"  data-key="t-detached"> View Annal limits </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="javascript:void(0)" class="nav-link"  data-key="t-detached">Settings</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="javascript:void(0)" class="nav-link"  data-key="t-detached">Management Reports</a>
+                                    </li>
+                                    
                                     
                                 </ul>
                             </div>
@@ -170,10 +200,13 @@
                             <div class="collapse menu-dropdown" id="wellness">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="javascript:void(0)" class="nav-link"  data-key="t-horizontal">All Claims</a>
+                                        <a href="javascript:void(0)" class="nav-link"  data-key="t-horizontal">Manage Claims</a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="/" class="nav-link"  data-key="t-detached">Add Claims</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="javascript:void(0)" class="nav-link"  data-key="t-detached"></a>
                                     </li>
                                     
                                 </ul>
